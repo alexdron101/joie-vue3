@@ -16,7 +16,7 @@ const lang = route.params.lang;
 
 
 onMounted(() => {
-  fetch('http://joie-new.loc/api/get-works')
+  fetch('https://new.joie.com.ua/api/get-works')
     //.then(response => response.json())
     //.then(data => { users.value = data });
     .then(response => response.json())
@@ -29,7 +29,7 @@ onMounted(() => {
   
 
   console.log(route.name);
-  console.log(route.component);
+  console.log(route.params);
 
   if (route.params.hasOwnProperty('lang')) { lang = route.params.lang }
 
@@ -67,7 +67,7 @@ onMounted(() => {
       <div id="portfoliolist" class="portfolio-area">
 
         <div v-for="item in works" class="portfolio land wow fadeIn" data-wow-delay="0.0s" data-cat="land">
-          <img :src="'http://joie-new.loc/storage/' + item.image">
+          <img :src="'https://new.joie.com.ua/storage/' + item.image">
           <span>
             <a target="_blank" href="https://apk-global.com/" rel="noopener noreferrer">apk-global.com</a>
             <p v-html="item['title_' + lang]"></p>
