@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 
-const lang = {
-  props: ['id'],
-}
+// const lang = {
+//   props: ['id'],
+// }
 
 const router = createRouter({
 
@@ -11,19 +11,20 @@ const router = createRouter({
 
   routes: [
     {
-      path: '/',
+      path: '/:lang',
       name: 'joie-home-ua',
       component: () => import('../views/joie-home.vue'),
       props: true,
-      params: {lang: 'ru' },
-    },
-    {
-      path: '/ru/',
-      name: 'joie-home-ru',
-      component: () => import('../views/joie-home.vue'),
-      props: true,
-      params: {lang: 'ru' },
-    },
+     params: {lang: 'ua' }
+    }
+    // },
+    // {
+    //   path: '/ru/',
+    //   name: 'joie-home-ru',
+    //   component: () => import('../views/joie-home.vue'),
+    //   props: true,
+    //   params: {lang: 'ru' },
+    // },
 
   ]
 });
