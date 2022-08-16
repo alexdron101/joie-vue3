@@ -1,4 +1,4 @@
-<script setup="">
+<script setup>
 /* Начало импорт АПИ*/
 import { ref, onMounted } from 'vue'
 import { startBrain } from '../assets/js/brain.js'
@@ -12,8 +12,10 @@ const works = ref(0)
 
 
 const route = useRoute()
+//const lang = route.params.lang;
 const lang = route.params.lang;
-
+console.log("lang=",lang);
+var current_lang='ua'
 
 onMounted(() => {
   fetch('https://new.joie.com.ua/api/get-works')
@@ -28,10 +30,10 @@ onMounted(() => {
 
   
 
-  console.log(route.name);
-  console.log(route.params);
+  
+  //console.log(route.params);
 
-  if (route.params.hasOwnProperty('lang')) { lang = route.params.lang }
+  if (route.params.hasOwnProperty('lang')) { current_lang = route.params.lang; console.log("current_lang=",current_lang); }
 
 })
 
