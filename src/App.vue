@@ -43,8 +43,8 @@ import { useRoute } from 'vue-router'
 
     <div class="widget widget_polylang">
       <ul>
-        <li class="current-lang"><router-link :to="{ name: 'joie-home-ua'}">UA</router-link></li>
-        <li class="">RU</li>
+        <li class="current-lang"><router-link :to="{ name: 'joie-home-ua', props: true, params:{lang:'ua'}, id: 123,}">UA</router-link></li>
+        <li class=""><router-link :to="{ name: 'joie-home-ru', props: true, params:{lang:'ru'}, id: 123,}">RU</router-link></li>
         <li class=""><a lang="en-US" hreflang="en-US" href="">EN</a></li>
       </ul>
     </div>

@@ -15,14 +15,12 @@ const router = createRouter({
       name: 'joie-home-ua',
       component: () => import('../views/joie-home.vue'),
       props: true,
-      params: {lang: 'ru' },
     },
     {
-      path: '/ru/',
+      path: '/ru',
       name: 'joie-home-ru',
       component: () => import('../views/joie-home.vue'),
       props: true,
-      params: {lang: 'ru' },
     },
 
   ]
