@@ -15,8 +15,8 @@ const router = createRouter({
       name: 'joie-home-ua',
       component: () => import('../views/joie-home.vue'),
       props: true,
-     params: {lang: 'ua' }
-     
+     //params: {lang: 'ua' }
+    
     },
   
     // {
