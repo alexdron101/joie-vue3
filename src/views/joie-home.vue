@@ -80,7 +80,7 @@ onMounted(() => {
           <span>
             <a target="_blank" href="https://apk-global.com/" rel="noopener noreferrer">apk-global.com</a>
             
-            <p v-if="lang==='ua'">{{item.title_ua}}</p>
+            <p v-if="lang==='ua'">{{item.title_ua}}</p> 
             <p v-if="lang==='ru'">{{item.title_ru}}</p>
             <p v-if="lang==='en'">{{item.title_en}}</p>
 
