@@ -11,15 +11,16 @@ const router = createRouter({
 
   routes: [
     {
-      path: '/:lang',
+      path: '/:lang?',
       name: 'joie-home-ua',
       component: () => import('../views/joie-home.vue'),
       props: true,
      params: {lang: 'ua' }
-    }
-    // },
+     
+    },
+  
     // {
-    //   path: '/ru/',
+    //   path: '/',
     //   name: 'joie-home-ru',
     //   component: () => import('../views/joie-home.vue'),
     //   props: true,
