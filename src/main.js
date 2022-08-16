@@ -7,8 +7,5 @@ import './assets/main.css'
 const app = createApp(App)
 
 app.use(router)
-// Replace -> app.mount('#app')
-router.isReady().then(() => {
-  app.mount('#app')
-  console.log("app.mount('#app')")
-})
+
+app.mount('#app')
