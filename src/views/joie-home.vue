@@ -15,7 +15,6 @@ const route = useRoute()
 const lang = route.params.lang;
 
 
-
 onMounted(() => {
   fetch('https://new.joie.com.ua/api/get-works')
     //.then(response => response.json())
@@ -30,8 +29,7 @@ onMounted(() => {
   
 
   console.log(route.name);
-    console.log(route.params);
-  console.log(route.params.lang);
+  console.log(route.params);
 
   if (route.params.hasOwnProperty('lang')) { lang = route.params.lang }
 
