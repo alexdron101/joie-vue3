@@ -23,10 +23,7 @@ if (lang === '') {lang='ua';}
 console.log("lang=",lang);
 console.log("works=",works);
 
-//var current_lang='';
-function myeval(str){
-  return window.eval(str);
-}
+
 
 onMounted(() => {
   fetch('https://new.joie.com.ua/api/get-works')
