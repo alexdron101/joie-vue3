@@ -12,27 +12,35 @@ const works = ref(0)
 
 
 const route = useRoute()
+
 const lang = route.params.lang;
+
+//const lang = route.params.lang;
+// ----------------------------------------------------
+// если роут = "/" , то язык по умолчанию - украинский
+// ----------------------------------------------------
+var lang = route.params.lang;
+if (lang === '') {lang='ua';}
+
+
+
 console.log("lang=",lang);
-var current_lang='ua'
+console.log("works=",works);
+
+
 
 onMounted(() => {
   fetch('https://new.joie.com.ua/api/get-works')
     //.then(response => response.json())
     //.then(data => { users.value = data });
     .then(response => response.json())
-    .then(data => { works.value = data });
+    .then(data => { works.value = data;});
 
   // Try to start your function in this onMounted
   startBrain();
-
-
   
 
-  
-  //console.log(route.params);
-
-  if (route.params.hasOwnProperty('lang')) { current_lang = route.params.lang; console.log("current_lang=",current_lang); }
+ // if (route.params.hasOwnProperty('lang')) { current_lang = route.params.lang; console.log("current_lang=",current_lang); }
 
 })
 
@@ -48,6 +56,7 @@ onMounted(() => {
 
 
 <template>
+<div>
   <div class="home-banner" id="top-block">
     <h1 class="wow fadeInLeft">JOIE WEB AGENCY</h1>
     <h2 class="wow fadeIn">WEBSITE DEVELOPMENT<br>FOR BUSINESS</h2>
@@ -67,11 +76,15 @@ onMounted(() => {
     <div id="first-block" class="lust-works">
       <div id="portfoliolist" class="portfolio-area">
 
-        <div v-for="item in works" class="portfolio land wow fadeIn" data-wow-delay="0.0s" data-cat="land">
+        <div v-for="item in works" :key="item.id" class="portfolio land wow fadeIn" data-wow-delay="0.0s" data-cat="land">
           <img :src="'https://new.joie.com.ua/storage/' + item.image">
           <span>
             <a target="_blank" href="https://apk-global.com/" rel="noopener noreferrer">apk-global.com</a>
-            <p v-html="item['title_' + lang]"></p>
+            
+            <p v-if="lang==='ua'">{{item.title_ua}}</p> 
+            <p v-if="lang==='ru'">{{item.title_ru}}</p>
+            <p v-if="lang==='en'">{{item.title_en}}</p>
+
           </span>
         </div>
 
@@ -83,6 +96,7 @@ onMounted(() => {
       </div>
     </div>
   </section>
+  </div>
 </template>
 
 
