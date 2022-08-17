@@ -25,10 +25,8 @@ import { useRoute } from 'vue-router'
           <li><a href="tel:+380984543099"><img src="/src/assets/images/call.png"> +38-098-4543-099</a></li>
           <li><a href="tel:+380505739439"><img src="/src/assets/images/call.png"> +38-050-5739-439</a></li>
           <li><a href="viber://chat?number=+380984543099"><img src="/src/assets/images/viber.png"> Viber Call</a></li>
-          <li><a target="blank" href="https://t.me/webjoie" rel="noopener noreferrer"><img
-                src="/src/assets/images/telegram.png"> Telegram Call</a></li>
-          <li><a target="blank" href="https://wa.me/380984543099" rel="noopener noreferrer"><img
-                src="/src/assets/images/whatsapp.png"> WhatsApp Call</a></li>
+          <li><a target="blank" href="https://t.me/webjoie" rel="noopener noreferrer"><img src="/src/assets/images/telegram.png"> Telegram Call</a></li>
+          <li><a target="blank" href="https://wa.me/380984543099" rel="noopener noreferrer"><img src="/src/assets/images/whatsapp.png"> WhatsApp Call</a></li>
           <li><a><img src="/src/assets/images/mail.png"> info@joie.com.ua</a></li>
         </ul>
       </li>

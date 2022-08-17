@@ -12,7 +12,6 @@ const works = ref(0)
 
 
 const route = useRoute()
-//const lang = route.params.lang;
 const lang = route.params.lang;
 console.log("lang=",lang);
 var current_lang='ua'

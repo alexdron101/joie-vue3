@@ -15,17 +15,15 @@ const router = createRouter({
       name: 'joie-home-ua',
       component: () => import('../views/joie-home.vue'),
       props: true,
-     //params: {lang: 'ua' }
     
     },
   
-    // {
-    //   path: '/',
-    //   name: 'joie-home-ru',
-    //   component: () => import('../views/joie-home.vue'),
-    //   props: true,
-    //   params: {lang: 'ru' },
-    // },
+     {
+       path: '/:lang?',
+       name: 'joie-home-ru',
+       component: () => import('../views/joie-home.vue'),
+       props: true,
+     },
 
   ]
 });
