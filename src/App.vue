@@ -42,13 +42,13 @@ import { useRoute } from 'vue-router'
 
     <div class="widget widget_polylang">
       <ul>
-        <li class="current-lang">
+        <li class="ua">
           <RouterLink to="/ua">UA</RouterLink>
         </li>
-        <li class="">
+        <li class="ru">
           <RouterLink to="/ru">RU</RouterLink>
         </li>
-        <li class="">
+        <li class="en">
           <RouterLink to="/en">EN</RouterLink>
         </li>
       </ul>

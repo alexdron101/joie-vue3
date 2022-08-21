@@ -562,7 +562,9 @@ div#forma  div.divform ~ p {
   display: table;
   width: 100%;
 }
-.widget.widget_polylang ul .current-lang a {
+div[lang="ua"] {}
+div[lang="ua"] .widget.widget_polylang ul{}
+div[lang="ua"] .widget.widget_polylang ul .ua a {
   color: #f22828;
 }
 .widget.widget_polylang ul {

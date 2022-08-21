@@ -14,14 +14,15 @@ const lang = ref(route.params.lang)
 
 
 
-if (lang === '') { lang.value = 'ua'; }
-console.log("lang=", lang);
+if (lang.value === '') { lang.value = 'ua'; localStorage.setItem('lang', lang.value)}
+
+
 
 
 /* Следит за изменениями параметров роута и вообще всех параметров которые сюда запишешь*/
 watch(() => route.params, async (toParams, previousParams) => {
   lang.value = route.params.lang;
-  console.log("lang=", lang);
+  localStorage.setItem('lang', lang.value)
 })
 
 
@@ -58,31 +59,8 @@ onMounted(() => {
 
 </script>
 
-<script>
 
 
-
-export default {
-
-  methods: {
-
-    change_lang(params) {
-      this.$router.push(params);
-      // Удаление моего компонента из DOM 
-      this.renderComponent = false;
-
-      this.$nextTick(() => {
-        // Добавляем компонент обратно в 
-        this.renderComponent = true;
-      });
-    }
-
-  },
-
-};
-
-
-</script>
 
 
 <template>
@@ -93,13 +71,8 @@ export default {
     <div>
       <div class="home-banner" id="top-block">
 
-        <li class="" @click="change_lang('ru')"><a>RU</a></li>
-        <li class="" @click="change_lang('en')"><a>EN</a></li>
-
         <h1>{{ (pages.id5 && pages.id5['text_' + lang]) || "" }}</h1>
-
         <h2 v-html="pages.id6 && pages.id6['text_' + lang]"></h2>
-
 
         <div class="span"><span id="typed-en"></span><span class="typed-cursor"></span></div>
 
