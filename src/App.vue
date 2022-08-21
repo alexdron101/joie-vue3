@@ -57,12 +57,6 @@ import { useRoute } from 'vue-router'
 
     </div>
 
-
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-      </nav>
-    </div>
   </header>
 
 
