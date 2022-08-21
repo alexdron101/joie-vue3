@@ -1,20 +1,24 @@
 <script setup>
-/* Начало импорт АПИ*/
+
 import { ref, onMounted } from 'vue'
 import { startBrain } from '../assets/js/brain.js'
 import { useRoute } from 'vue-router'
 import { watch } from 'vue'
 
 
+/*Динамические - реактивные переменные*/
 const works = ref(0)
 const pages = ref(0)
 const route = useRoute()
-
 const lang = ref(route.params.lang)
+
+
 
 if (lang === '') { lang.value = 'ua'; }
 console.log("lang=", lang);
 
+
+/* Следит за изменениями параметров роута и вообще всех параметров которые сюда запишешь*/
 watch(() => route.params, async (toParams, previousParams) => {
   lang.value = route.params.lang;
   console.log("lang=", lang);
@@ -23,6 +27,8 @@ watch(() => route.params, async (toParams, previousParams) => {
 
 
 onMounted(() => {
+
+  /* Начало импорт АПИ*/
   fetch('https://new.joie.com.ua/api/get-works')
     .then(response => response.json())
     .then(data => {
@@ -32,7 +38,7 @@ onMounted(() => {
 
 
 
-
+  /* Начало импорт АПИ*/
   fetch('https://new.joie.com.ua/api/get-page-home')
     .then(response => response.json())
     .then(data => {
@@ -43,6 +49,7 @@ onMounted(() => {
       pages.value = formatedData;
     });
 
+  /*Скрипт мозга*/
   startBrain();
 
 })
