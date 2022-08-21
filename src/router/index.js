@@ -16,14 +16,7 @@ const router = createRouter({
       component: () => import('../views/joie-home.vue'),
       props: true,
     
-    },
-  
-     {
-       path: '/:lang?',
-       name: 'joie-home-ru',
-       component: () => import('../views/joie-home.vue'),
-       props: true,
-     },
+    }
 
   ]
 });

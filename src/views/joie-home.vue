@@ -10,19 +10,12 @@ const works = ref(0)
 const pages = ref(0)
 const route = useRoute()
 
-
-
-//const lang = route.params.lang;
-// ----------------------------------------------------
-// если роут = "/" , то язык по умолчанию - украинский
-// ----------------------------------------------------
 var lang = route.params.lang;
 if (lang === '') { lang = 'ua'; }
 
 
 
 console.log("lang=", lang);
-console.log("works=", works);
 
 
 
@@ -39,8 +32,6 @@ onMounted(() => {
 
   fetch('https://new.joie.com.ua/api/get-page-home')
     .then(response => response.json())
-    //.then(data => { pages.value = data; });
-
     .then(data => {
       let formatedData = {};
       data.forEach(it => {
@@ -50,17 +41,48 @@ onMounted(() => {
     });
 
   startBrain();
+  
 })
 
 
 
 </script>
 
+<script>
 
-<template>
+
+
+export default {
+  
+  methods: {
+
+    change_lang(params) {
+      this.$router.push(params);
+        // Удаление моего компонента из DOM 
+        this.renderComponent = false; 
+
+        this.$nextTick(() => { 
+          // Добавляем компонент обратно в 
+          this.renderComponent = true; 
+        }); 
+      } 
+
+  },
+
+};
+</script>
+
+
+<template><div>
+
+    
+
   <div>
     <div class="home-banner" id="top-block">
 
+    <li class="" @click="change_lang('ru')"><a>RU</a></li>
+        <li class="" @click="change_lang('en')"><a>EN</a></li>
+        
       <h1>{{ (pages.id5 && pages.id5['text_' + lang]) || "" }}</h1>
 
       <h2 v-html="pages.id6 && pages.id6['text_' + lang]"></h2>
@@ -188,7 +210,9 @@ onMounted(() => {
 
 
     <div class="benefits">
+
       <h2>{{ (pages.id21 && pages.id21['text_' + lang]) || "" }}</h2>
+
       <div class="team">
         <span class="wow fadeIn" data-wow-delay="1.0s">
           <img data-src="" src="/src/assets/images/alex.png">
@@ -254,7 +278,6 @@ onMounted(() => {
   </section>
 
 
-
-</template>
+</div></template>
 
 

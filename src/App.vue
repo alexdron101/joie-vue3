@@ -3,6 +3,8 @@ import { RouterLink, RouterView } from 'vue-router'
 import { useRoute } from 'vue-router'
 
 
+
+
 </script>
 
 
@@ -25,8 +27,10 @@ import { useRoute } from 'vue-router'
           <li><a href="tel:+380984543099"><img src="/src/assets/images/call.png"> +38-098-4543-099</a></li>
           <li><a href="tel:+380505739439"><img src="/src/assets/images/call.png"> +38-050-5739-439</a></li>
           <li><a href="viber://chat?number=+380984543099"><img src="/src/assets/images/viber.png"> Viber Call</a></li>
-          <li><a target="blank" href="https://t.me/webjoie" rel="noopener noreferrer"><img src="/src/assets/images/telegram.png"> Telegram Call</a></li>
-          <li><a target="blank" href="https://wa.me/380984543099" rel="noopener noreferrer"><img src="/src/assets/images/whatsapp.png"> WhatsApp Call</a></li>
+          <li><a target="blank" href="https://t.me/webjoie" rel="noopener noreferrer"><img
+                src="/src/assets/images/telegram.png"> Telegram Call</a></li>
+          <li><a target="blank" href="https://wa.me/380984543099" rel="noopener noreferrer"><img
+                src="/src/assets/images/whatsapp.png"> WhatsApp Call</a></li>
           <li><a><img src="/src/assets/images/mail.png"> info@joie.com.ua</a></li>
         </ul>
       </li>
@@ -38,13 +42,19 @@ import { useRoute } from 'vue-router'
       </a>
     </div>
 
-
     <div class="widget widget_polylang">
       <ul>
-        <li class="current-lang"><router-link :to="{ name: 'joie-home-ua'}">UA</router-link></li>
-        <li class="">RU</li>
-        <li class=""><a lang="en-US" hreflang="en-US" href="">EN</a></li>
+        <li class="current-lang">
+          <RouterLink to="/ua">UA</RouterLink>
+        </li>
+        <li class="">
+          <RouterLink to="/ru">RU</RouterLink>
+        </li>
+        <li class="">
+          <RouterLink to="/en">EN</RouterLink>
+        </li>
       </ul>
+
     </div>
 
 
