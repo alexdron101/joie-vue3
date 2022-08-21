@@ -11,7 +11,7 @@ const pages = ref(0)
 const route = useRoute()
 
 var lang = route.params.lang;
-if (lang === '') { lang = 'ua'; }
+if (lang === '') { lang = 'ru'; }
 
 
 
@@ -82,8 +82,6 @@ export default {
   <div>
     <div class="home-banner" id="top-block">
 
-    <li class="" @click="change_lang('ru')"><a>RU</a></li>
-        <li class="" @click="change_lang('en')"><a>EN</a></li>
         
       <h1>{{ (pages.id5 && pages.id5['text_' + lang]) || "" }}</h1>
 

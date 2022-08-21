@@ -18,7 +18,7 @@ const router = createRouter({
     
     },
     {
-      path: '/ru/:lang=ru',
+      path: '/ru:lang?',
       name: 'joie-home-ru',
       component: () => import('../views/joie-home_ru.vue'),
       props: true,

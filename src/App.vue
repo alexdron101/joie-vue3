@@ -3,8 +3,6 @@ import { RouterLink, RouterView } from 'vue-router'
 import { useRoute } from 'vue-router'
 
 
-
-
 </script>
 
 
