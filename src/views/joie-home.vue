@@ -7,9 +7,6 @@ import { watch } from 'vue'
 
 
 const works = ref(0)
-function even(works) {
-  return works.filter((item) => item.weight % 2 === 0)
-}
 const pages = ref(0)
 const route = useRoute()
 
@@ -32,7 +29,14 @@ console.log("works=", works);
 onMounted(() => {
   fetch('https://new.joie.com.ua/api/get-works')
     .then(response => response.json())
-    .then(data => { works.value = data; });
+    .then(data => {
+      works.value = Object.keys(data).map((key) => data[key]).sort(function (a, b) { return a.weight - b.weight; });
+    });
+
+
+
+
+
   fetch('https://new.joie.com.ua/api/get-page-home')
     .then(response => response.json())
     //.then(data => { pages.value = data; });
@@ -71,12 +75,20 @@ onMounted(() => {
 
       <a href="#work" class="scrollto first-a-scroll"><b></b></a>
     </div>
-</div>
+  </div>
 
 
   <section id="work" class="active">
+
+
+
     <div id="first-block" class="lust-works">
+
+      <span class="label">WORKS</span>
+      <h2>{{ (pages.id8 && pages.id8['text_' + lang]) || "" }}</h2>
+
       <div id="portfoliolist" class="portfolio-area">
+
 
 
         <template v-for="item in works" :key="item.weight">
@@ -84,9 +96,7 @@ onMounted(() => {
             <div class="portfolio">
               <img :src="'https://new.joie.com.ua/storage/' + item.image">
               <span>
-                <a target="_blank" href="{{ item.link }}" rel="noopener noreferrer">{{ item.link }}</a>
-                <p>Weight = {{ item.weight }}</p>
-                <p>ID = {{ item.id }}</p>
+                <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{ item.link }}</a>
                 <p v-if="lang === 'ua'">{{ item.title_ua }}</p>
                 <p v-if="lang === 'ru'">{{ item.title_ru }}</p>
                 <p v-if="lang === 'en'">{{ item.title_en }}</p>
@@ -104,7 +114,147 @@ onMounted(() => {
       </div>
     </div>
   </section>
-  
+
+
+
+
+
+
+  <section id="we-are" class="active">
+
+    <span class="label">WE ARE</span>
+
+    <div class="services">
+
+      <h2>{{ (pages.id11 && pages.id11['text_' + lang]) || "" }}</h2>
+      <p>{{ (pages.id12 && pages.id12['text_' + lang]) || "" }}</p>
+
+      <span class="wow fadeInUp">
+        <div class="a"><img src="/src/assets/images/y1.png">
+          <span v-html="pages.id13 && pages.id13['text_' + lang]"></span>
+          <a class="readmore" href="/home-ua/poslygi/rozrobka-saity/">{{ (pages.id20 && pages.id20['text_' + lang]) ||
+              ""
+          }}</a>
+        </div>
+
+        <div class="a"><img src="/src/assets/images/y2.png">
+          <span v-html="pages.id14 && pages.id14['text_' + lang]"></span>
+          <a class="readmore" href="/home-ua/poslygi/razrabotka-landing-page/">{{ (pages.id20 && pages.id20['text_' +
+              lang]) || ""
+          }}</a>
+        </div>
+
+        <div class="a"><img src="/src/assets/images/y3.png">
+          <span v-html="pages.id15 && pages.id15['text_' + lang]"></span>
+          <a class="readmore" href="/home-ua/poslygi/rozrobka-internet-magaziny/">{{ (pages.id20 && pages.id20['text_' +
+              lang]) || ""
+          }}</a>
+        </div>
+
+        <div class="a"><img src="/src/assets/images/y4.png">
+          <span v-html="pages.id16 && pages.id16['text_' + lang]"></span>
+          <a class="readmore" href="/home-ua/poslygi/kontexstnaya-reklama/">{{ (pages.id20 && pages.id20['text_' +
+              lang]) || ""
+          }}</a>
+        </div>
+
+        <div class="a"><img src="/src/assets/images/y5.png">
+          <span v-html="pages.id17 && pages.id17['text_' + lang]"></span>
+          <a class="readmore" href="/home-ua/poslygi/seo-prodvizenie/">{{ (pages.id20 && pages.id20['text_' + lang]) ||
+              ""
+          }}</a>
+        </div>
+
+        <div class="a"><img src="/src/assets/images/y6.png">
+          <span v-html="pages.id18 && pages.id18['text_' + lang]"></span>
+          <a class="readmore" href="/home-ua/poslygi/razrabotka-logotipa/">{{ (pages.id20 && pages.id20['text_' + lang])
+              || ""
+          }}</a>
+        </div>
+
+        <div class="a"><img src="/src/assets/images/y7.png">
+          <span v-html="pages.id19 && pages.id19['text_' + lang]"></span>
+          <a class="readmore" href="/home-ua/poslygi/razrabotka-firmennogo-stilya/">{{ (pages.id20 && pages.id20['text_'
+              + lang]) || ""
+          }}</a>
+        </div>
+
+        <div class="b">
+          <img src="/src/assets/images/brain-min.png">
+        </div>
+      </span>
+    </div>
+
+
+
+    <div class="benefits">
+      <h2>{{ (pages.id21 && pages.id21['text_' + lang]) || "" }}</h2>
+      <div class="team">
+        <span class="wow fadeIn" data-wow-delay="1.0s">
+          <img data-src="" src="/src/assets/images/alex.png">
+          <span v-html="pages.id22 && pages.id22['text_' + lang]"></span>
+        </span>
+        <span class="wow fadeIn" data-wow-delay="1.2s">
+          <img data-src="" src="/src/assets/images/John.png">
+          <span v-html="pages.id23 && pages.id23['text_' + lang]"></span>
+        </span>
+        <span class="wow fadeIn" data-wow-delay="1.4s">
+          <img data-src="" src="/src/assets/images/kolya.png">
+          <span v-html="pages.id24 && pages.id24['text_' + lang]"></span>
+        </span>
+        <span class="wow fadeIn" data-wow-delay="1.6s">
+          <img data-src="" src="/src/assets/images/Lee.png">
+          <span v-html="pages.id25 && pages.id25['text_' + lang]"></span>
+        </span>
+        <span class="wow fadeIn" data-wow-delay="1.8s">
+          <img data-src="" src="/src/assets/images/Maxim.png">
+          <span v-html="pages.id26 && pages.id26['text_' + lang]"></span>
+        </span>
+        <span class="wow fadeIn" data-wow-delay="2.0s">
+          <img data-src="" src="/src/assets/images/tanya.png">
+          <span v-html="pages.id27 && pages.id27['text_' + lang]"></span>
+        </span>
+      </div>
+    </div>
+
+
+    <div class="benerfits">
+      <div class="benefits__element wow fadeIn" data-wow-delay="1.0s">
+        <p class="benefits__number">174</p>
+        <p class="benefits__title"> <span v-html="pages.id28 && pages.id28['text_' + lang]"></span></p>
+      </div>
+      <div class="benefits__element wow fadeIn" data-wow-delay="1.2s">
+        <p class="benefits__number">27</p>
+        <p class="benefits__title"> <span v-html="pages.id29 && pages.id29['text_' + lang]"></span></p>
+      </div>
+      <div class="benefits__element wow fadeIn" data-wow-delay="1.4s">
+        <p class="benefits__number">330</p>
+        <p class="benefits__title"> <span v-html="pages.id30 && pages.id30['text_' + lang]"></span></p>
+      </div>
+      <div class="benefits__element wow fadeIn" data-wow-delay="1.6s">
+        <p class="benefits__number">6</p>
+        <p class="benefits__title"> <span v-html="pages.id31 && pages.id31['text_' + lang]"></span></p>
+      </div>
+      <div class="benefits__element wow fadeIn" data-wow-delay="1.8s">
+        <p class="benefits__number">8</p>
+        <p class="benefits__title"> <span v-html="pages.id32 && pages.id32['text_' + lang]"></span></p>
+      </div>
+      <div class="benefits__element wow fadeIn" data-wow-delay="2.0s">
+        <p class="benefits__number">15</p>
+        <p class="benefits__title"> <span v-html="pages.id33 && pages.id33['text_' + lang]"></span></p>
+      </div>
+    </div>
+
+
+
+    <span v-html="pages.id34 && pages.id34['text_' + lang]"></span>
+
+
+
+  </section>
+
+
+
 </template>
 
 

@@ -915,7 +915,17 @@ body .el-slider__button-wrapper {
   box-sizing: border-box;
   font-size: 12px;
 }
-
+ p.benefits__number {
+  font-size: 3vw;
+  margin: 0;
+  padding: 0;
+  font-weight: 900;
+  font-family: revert;
+  color: #f22828;
+  text-align: center;
+  width: 100%;
+  padding-top: 17px;
+}
 .ex-content h3 {
   font-size: 18px;
 }
@@ -1991,10 +2001,10 @@ span.label {
   background: #f22828;
   color: #fff;
 }
-.entry-content .benefits__element:hover p.benefits__number{
+.benefits__element:hover p.benefits__number{
 color: #fff;
 }
-.entry-content p.benefits__number {
+ p.benefits__number {
   font-size: 3vw;
   margin: 0;
   padding: 0;
@@ -2217,7 +2227,7 @@ transform: scale(0);
   background: #242424;
   z-index: 1;
 }
-.services span {
+.services > span {
   padding: 0;
   display: grid;
   width: 100%;
