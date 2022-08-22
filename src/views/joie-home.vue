@@ -2,6 +2,7 @@
 
 import { ref, onMounted } from 'vue'
 import { startBrain } from '../assets/js/brain.js'
+import { startMain } from '../assets/js/main.js'
 import { useRoute } from 'vue-router'
 import { watch } from 'vue'
 
@@ -12,9 +13,16 @@ const pages = ref(0)
 const route = useRoute()
 const lang = ref(route.params.lang)
 
+if (lang.value != '') {
+  document.body.classList.add(lang.value)
+}
 
-
-if (lang.value === '') { lang.value = 'ua'; localStorage.setItem('lang', lang.value)}
+if (lang.value === '') {
+  lang.value = 'ua';
+  localStorage.setItem('lang', 'ua');
+  document.body.classList.add('ua');
+  document.body.classList.add(lang.value)
+}
 
 
 
@@ -23,6 +31,8 @@ if (lang.value === '') { lang.value = 'ua'; localStorage.setItem('lang', lang.va
 watch(() => route.params, async (toParams, previousParams) => {
   lang.value = route.params.lang;
   localStorage.setItem('lang', lang.value)
+  document.body.classList.remove('ua', 'ru', 'en')
+  document.body.classList.add(lang.value)
 })
 
 
@@ -52,7 +62,8 @@ onMounted(() => {
 
   /*Скрипт мозга*/
   startBrain();
-
+  /*Скрипты*/
+  startMain();
 })
 
 
@@ -262,7 +273,7 @@ onMounted(() => {
 
 
       <span v-html="pages.id34 && pages.id34['text_' + lang]"></span>
-
+      <span v-html="pages.id35 && pages.id35['text_' + lang]"></span>
 
 
     </section>

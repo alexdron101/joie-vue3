@@ -57,6 +57,30 @@ import { useRoute } from 'vue-router'
 
   </header>
 
+  <div class="widget-content widget_nav_menu">
+    <div>
+      <ul class="menu">
+        <li><a>Головна</a></li>
+        <li><a>Портфолiо</a></li>
+        <li><a>Калькулятор</a></li>
+        <li><a>Послуги</a>
+          <ul>
+            <li><a>Розробка сайту</a></li>
+            <li><a>Розробка Landing page</a></li>
+            <li><a>Розробка Iнтернет магазину</a></li>
+            <li><a>Контекстна реклама</a></li>
+            <li><a>Розробка логотипу</a></li>
+            <li><a>Розробка фiрмового стилю</a></li>
+            <li><a>SEO просування</a></li>
+          </ul>
+        </li>
+        <li><a>Вiдгуки</a></li>
+        <li><a>Контакти</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="body-back-fon"></div>
 
   <RouterView />
 
