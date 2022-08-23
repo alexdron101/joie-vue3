@@ -97,7 +97,7 @@ onMounted(() => {
     </div>
 
 
-    <section id="work" class="active">
+    <section id="work">
 
 
 
@@ -139,7 +139,7 @@ onMounted(() => {
 
 
 
-    <section id="we-are" class="active">
+    <section id="we-are">
 
       <span class="label">WE ARE</span>
 

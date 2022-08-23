@@ -370,12 +370,12 @@ body.night {
   background: #141414;
 }
 
-body.night .assassin .a{background:url(/wp-content/uploads/nback1.png); background-size:cover;animation-duration: 2s;    background-position: center;}
-body.night .assassin .b{background:url(/wp-content/uploads/nback2.png); background-size:cover;animation-duration: 4s;    background-position: center;}
-body.night .assassin .c{background:url(/wp-content/uploads/nback3.png); background-size:cover;animation-duration: 6s;    background-position: center;}
-body.night .assassin .d{background:url(/wp-content/uploads/nback4.png); background-size:cover;animation-duration: 8s;    background-position: center;}
-body.night .assassin .e{background:url(/wp-content/uploads/nback5.png); background-size:cover;animation-duration: 10s;    background-position: center;}
-body.night .assassin .f{background:url(/wp-content/uploads/nback6.png); background-size:cover;animation-duration: 12s;    background-position: center;}
+body.night .assassin .a{background:url(images/nback1.png); background-size:cover;animation-duration: 2s;    background-position: center;}
+body.night .assassin .b{background:url(images/nback2.png); background-size:cover;animation-duration: 4s;    background-position: center;}
+body.night .assassin .c{background:url(images/nback3.png); background-size:cover;animation-duration: 6s;    background-position: center;}
+body.night .assassin .d{background:url(images/nback4.png); background-size:cover;animation-duration: 8s;    background-position: center;}
+body.night .assassin .e{background:url(images/nback5.png); background-size:cover;animation-duration: 10s;    background-position: center;}
+body.night .assassin .f{background:url(images/nback6.png); background-size:cover;animation-duration: 12s;    background-position: center;}
 html body.night #magicPointer {
   background: #f22828;
 }
@@ -2778,12 +2778,12 @@ animation-iteration-count: infinite;
 opacity:0;
   
 }
-.assassin .a{background:url(/wp-content/uploads/back1.png); background-size:cover;animation-duration: 2s;    background-position: center;}
-.assassin .b{background:url(/wp-content/uploads/back2.png); background-size:cover;animation-duration: 4s;    background-position: center;}
-.assassin .c{background:url(/wp-content/uploads/back3.png); background-size:cover;animation-duration: 6s;    background-position: center;}
-.assassin .d{background:url(/wp-content/uploads/back4.png); background-size:cover;animation-duration: 8s;    background-position: center;}
-.assassin .e{background:url(/wp-content/uploads/back5.png); background-size:cover;animation-duration: 10s;    background-position: center;}
-.assassin .f{background:url(/wp-content/uploads/back6.png); background-size:cover;animation-duration: 12s;    background-position: center;}
+.assassin .a{background:url(/src/assets/images/back1.png); background-size:cover;animation-duration: 2s;    background-position: center;}
+.assassin .b{background:url(/src/assets/images/back2.png); background-size:cover;animation-duration: 4s;    background-position: center;}
+.assassin .c{background:url(/src/assets/images/back3.png); background-size:cover;animation-duration: 6s;    background-position: center;}
+.assassin .d{background:url(/src/assets/images/back4.png); background-size:cover;animation-duration: 8s;    background-position: center;}
+.assassin .e{background:url(/src/assets/images/back5.png); background-size:cover;animation-duration: 10s;    background-position: center;}
+.assassin .f{background:url(/src/assets/images/back6.png); background-size:cover;animation-duration: 12s;    background-position: center;}
 @keyframes kvadrat{
 from {
  opacity:1;

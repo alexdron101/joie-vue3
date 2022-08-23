@@ -87,6 +87,14 @@ import { useRoute } from 'vue-router'
 
   <RouterView />
 
+  <div class="assassin">
+    <b class="a"></b>
+    <b class="b"></b>
+    <b class="c"></b>
+    <b class="d"></b>
+    <b class="e"></b>
+    <b class="f"></b>
+  </div>
 
 </template>
 
