@@ -39,6 +39,9 @@ import { useRoute } from 'vue-router'
         <b></b>
       </a>
     </div>
+    <div class="scroll-progress" id="myBar"></div>
+
+
 
     <div class="widget widget_polylang">
       <ul>

@@ -15,16 +15,40 @@ export const startMain = () => {
 
 
 
+  const progressBar = document.querySelector('.scroll-progress');
+  const section = document.querySelector('body');
+  
+  const scrollProgressBar = () => {
+      let scrollDistance = -(section.getBoundingClientRect().top);
+      let progressPercentage =
+          (scrollDistance /
+              (section.getBoundingClientRect().height - 
+                  document.documentElement.clientHeight)) * 100;
+  
+      let val = Math.floor(progressPercentage);
+      progressBar.style.width = val + '%';
+  
+      if (val < 0) {
+          progressBar.style.width = '0%';
+      }
+  };
+  
+  window.addEventListener('scroll', scrollProgressBar);
 
 
-  var toggles = document.querySelectorAll('span.day-night');
 
-  for (var i = toggles.length - 1; i >= 0; i--) {
-    var toggle = toggles[i];
-    toggleHandler(toggle);
+
+
+
+
+  var toggles2 = document.querySelectorAll('span.day-night');
+
+  for (var i = toggles2.length - 1; i >= 0; i--) {
+    var toggle = toggles2[i];
+    toggleHandler2(toggle);
   };
 
-  function toggleHandler(toggle) {
+  function toggleHandler2(toggle) {
     toggle.addEventListener("click", function (e) {
       e.preventDefault();
       if (this.classList.contains("active") === true) {
