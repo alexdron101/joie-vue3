@@ -1,40 +1,16 @@
 <script setup>
-
 import { ref, onMounted } from 'vue'
-import { startBrain } from '../assets/js/brain.js'
-import { startMain } from '../assets/js/main.js'
 import { useRoute } from 'vue-router'
 import { watch } from 'vue'
 
-
-/*Динамические - реактивные переменные*/
 const works = ref(0)
 const pages = ref(0)
 const route = useRoute()
-const lang = ref(route.params.lang)
+const lang = ref(route.params.lang?route.params.lang:'ua')
 
-if (lang.value != '') {
-  document.body.classList.add(lang.value)
-}
-
-if (lang.value === '') {
-  lang.value = 'ua';
-  localStorage.setItem('lang', 'ua');
-  document.body.classList.add('ua');
-  document.body.classList.add(lang.value)
-}
-
-
-
-
-/* Следит за изменениями параметров роута и вообще всех параметров которые сюда запишешь*/
 watch(() => route.params, async (toParams, previousParams) => {
-  lang.value = route.params.lang;
-  localStorage.setItem('lang', lang.value)
-  document.body.classList.remove('ua', 'ru', 'en')
-  document.body.classList.add(lang.value)
+  lang.value = toParams.lang?toParams.lang:'ua';
 })
-
 
 
 onMounted(() => {
@@ -45,9 +21,6 @@ onMounted(() => {
     .then(data => {
       works.value = Object.keys(data).map((key) => data[key]).sort(function (a, b) { return a.weight - b.weight; });
     });
-
-
-
 
   /* Начало импорт АПИ*/
   fetch('https://new.joie.com.ua/api/get-page-home')
@@ -60,10 +33,6 @@ onMounted(() => {
       pages.value = formatedData;
     });
 
-  /*Скрипт мозга*/
-  startBrain();
-  /*Скрипты*/
-  startMain();
 })
 
 
@@ -75,9 +44,10 @@ onMounted(() => {
 
 
 <template>
+
   <div>
 
-
+    
 
     <div>
       <div class="home-banner" id="top-block">
@@ -89,7 +59,7 @@ onMounted(() => {
 
         <a class="a23 magic-hover magic-hover__square forma-up" v-html="pages.id7 && pages.id7['text_' + lang]"></a>
 
-        <canvas id="canvas">Your browser does not support Canvas</canvas>
+       
 
 
         <a href="#work" class="scrollto first-a-scroll"><b></b></a>
@@ -270,16 +240,29 @@ onMounted(() => {
         </div>
       </div>
 
-
+    
 
       <span v-html="pages.id34 && pages.id34['text_' + lang]"></span>
-      <span v-html="pages.id35 && pages.id35['text_' + lang]"></span>
-
 
     </section>
 
+    
+      <span v-html="pages.id35 && pages.id35['text_' + lang]"></span>
 
-  </div>
+      <span v-html="pages.id36 && pages.id36['text_' + lang]"></span>
+    
+      <span v-html="pages.id37 && pages.id37['text_' + lang]"></span>
+
+      <span v-html="pages.id38 && pages.id38['text_' + lang]"></span>
+ 
+
+
+
+
+
+</div>
 </template>
 
 
+
+  

@@ -1,7 +1,50 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import { RouterLink } from 'vue-router'
+import { startBrain } from './assets/js/brain.js'
+import { startMain } from './assets/js/main.js'
+import { ref, onMounted } from 'vue'
+import { watch } from 'vue'
 import { useRoute } from 'vue-router'
+import Footer from './views/joie-footer.vue'
+import Header from './views/joie-header.vue'
+import Brain from './views/brain.vue'
 
+const route = useRoute()
+const lang = ref(route.params.lang)
+
+
+if (lang.value != '') {
+  document.body.classList.add(lang.value)
+}
+
+if (lang.value === '') {
+  lang.value = 'ua';
+  localStorage.setItem('lang', 'ua');
+  document.body.classList.add('ua');
+  document.body.classList.add(lang.value)
+}
+
+
+
+
+onMounted(() => {
+
+  startBrain();
+  startMain();
+
+})
+
+/* Следит за изменениями параметров роута и вообще всех параметров которые сюда запишешь*/
+
+watch(() => route.params, async (toParams, previousParams) => {
+  console.log(toParams);
+  lang.value = toParams.lang ? toParams.lang : 'ua';
+  localStorage.setItem('lang', lang.value)
+  console.log(toParams.lang);
+  document.body.classList.remove('ua', 'ru', 'en')
+  document.body.classList.add(lang.value)
+})
 
 </script>
 
@@ -9,93 +52,38 @@ import { useRoute } from 'vue-router'
 
 
 <template>
-  <header>
+  <Header />
+  <Brain />
+  <router-view v-slot="{ Component, route }">
+    <Transition name="fade" mode="out-in">
+      <component :is="Component" />
+    </Transition>
+  </router-view>
 
-    <span class="day-night">
-      <img src="/src/assets/images/day.png">
-      <b></b>
-      <img src="/src/assets/images/night.png">
-    </span>
-
-    <div class="menu">
-      <a href="/" class="logo"><img src="/src/assets/images/logo-small.png"></a>
-
-      <li class="call-top"><a href="#." class="call-top"><img src="/src/assets/images/call.png"></a>
-        <ul>
-          <li><a href="tel:+380984543099"><img src="/src/assets/images/call.png"> +38-098-4543-099</a></li>
-          <li><a href="tel:+380505739439"><img src="/src/assets/images/call.png"> +38-050-5739-439</a></li>
-          <li><a href="viber://chat?number=+380984543099"><img src="/src/assets/images/viber.png"> Viber Call</a></li>
-          <li><a target="blank" href="https://t.me/webjoie" rel="noopener noreferrer"><img
-                src="/src/assets/images/telegram.png"> Telegram Call</a></li>
-          <li><a target="blank" href="https://wa.me/380984543099" rel="noopener noreferrer"><img
-                src="/src/assets/images/whatsapp.png"> WhatsApp Call</a></li>
-          <li><a><img src="/src/assets/images/mail.png"> info@joie.com.ua</a></li>
-        </ul>
-      </li>
-      <a class="a23 magic-hover magic-hover__square forma-up"><span>Залишити заявку</span></a>
-      <a class="b-menu magic-hover magic-hover__square"><s>Меню</s>
-        <b></b>
-        <b></b>
-        <b></b>
-      </a>
-    </div>
-    <div class="scroll-progress" id="myBar"></div>
-
-
-
-    <div class="widget widget_polylang">
-      <ul>
-        <li class="ua">
-          <RouterLink to="/ua">UA</RouterLink>
-        </li>
-        <li class="ru">
-          <RouterLink to="/ru">RU</RouterLink>
-        </li>
-        <li class="en">
-          <RouterLink to="/en">EN</RouterLink>
-        </li>
-      </ul>
-
-    </div>
-
-  </header>
-
-  <div class="widget-content widget_nav_menu">
-    <div>
-      <ul class="menu">
-        <li><a>Головна</a></li>
-        <li><a>Портфолiо</a></li>
-        <li><a>Калькулятор</a></li>
-        <li><a>Послуги</a>
-          <ul>
-            <li><a>Розробка сайту</a></li>
-            <li><a>Розробка Landing page</a></li>
-            <li><a>Розробка Iнтернет магазину</a></li>
-            <li><a>Контекстна реклама</a></li>
-            <li><a>Розробка логотипу</a></li>
-            <li><a>Розробка фiрмового стилю</a></li>
-            <li><a>SEO просування</a></li>
-          </ul>
-        </li>
-        <li><a>Вiдгуки</a></li>
-        <li><a>Контакти</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="body-back-fon"></div>
-
-  <RouterView />
-
-  <div class="assassin">
-    <b class="a"></b>
-    <b class="b"></b>
-    <b class="c"></b>
-    <b class="d"></b>
-    <b class="e"></b>
-    <b class="f"></b>
-  </div>
-
+  <Footer />
 </template>
 
 
+
+<style>
+
+.fade-leave-to {
+  transition: 0.4s;
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: 0.4s;
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: 0.4s;
+  opacity: 0;
+}
+.fade-enter-to {
+  transition: 2.4s;
+  opacity: 1;
+}
+
+
+
+</style>

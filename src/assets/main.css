@@ -1,4 +1,7 @@
+
 /* night-mode start*/
+
+
 body.night  span.calls .a img {
   animation: none;
 }
@@ -1473,7 +1476,7 @@ div#footer {
   margin-top: 135px;
   display: table;
   width: 100%;
-  background: url(/wp-content/uploads/ukraine.png), #fff;
+  background: url(../assets/images/ukraine.png), #fff;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20%;
@@ -1519,7 +1522,7 @@ div#our-partners {
   margin-top: 135px;
   display: table;
   width: 100%;
-  background: url(/wp-content/uploads/ukraine.png), #fff;
+  background: url(images/ukraine.png), #fff;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 46%;
@@ -2810,6 +2813,7 @@ body {
   margin: 0 auto;
   max-width: 1920px;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 @media(min-width:1921px){
@@ -3021,6 +3025,11 @@ div#footer-in span::after {
 }
 canvas#canvas {
   top: 18vh;
+  right: 0%;
+  transform: scale(0.7);
+}
+.home-banner canvas#canvas {
+  top: 10vh;
   right: 0%;
   transform: scale(0.7);
 }
@@ -3455,7 +3464,7 @@ li.call-top {
   list-style: none;
   display: none;
 }
-canvas#canvas {
+.home-banner canvas#canvas {
   top: 0;
   left: calc(50% - 160px);
   right: auto;
