@@ -14,7 +14,7 @@ watch(() => route.params, async (toParams, previousParams) => {
 
 
 onMounted(() => {
-
+  document.body.classList.add('page-small')
   /* Начало импорт АПИ*/
   fetch('https://new.joie.com.ua/api/get-works')
     .then(response => response.json())

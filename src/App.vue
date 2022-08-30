@@ -28,22 +28,29 @@ if (lang.value === '') {
 
 
 
-onMounted(() => {
 
+
+
+
+
+onMounted(() => {
   startBrain();
   startMain();
-
 })
 
 /* Следит за изменениями параметров роута и вообще всех параметров которые сюда запишешь*/
 
 watch(() => route.params, async (toParams, previousParams) => {
-  console.log(toParams);
   lang.value = toParams.lang ? toParams.lang : 'ua';
   localStorage.setItem('lang', lang.value)
-  console.log(toParams.lang);
   document.body.classList.remove('ua', 'ru', 'en')
   document.body.classList.add(lang.value)
+
+  document.body.classList.add('brain-mute')
+  function brain_mute() {
+    document.body.classList.remove('brain-mute')
+  }
+  setTimeout(brain_mute, 1000);
 })
 
 </script>
@@ -66,24 +73,23 @@ watch(() => route.params, async (toParams, previousParams) => {
 
 
 <style>
-
 .fade-leave-to {
   transition: 0.4s;
   opacity: 1;
 }
+
 .fade-leave-active {
   transition: 0.4s;
   opacity: 0;
 }
+
 .fade-enter-active {
   transition: 0.4s;
   opacity: 0;
 }
+
 .fade-enter-to {
   transition: 2.4s;
   opacity: 1;
 }
-
-
-
 </style>

@@ -7,6 +7,8 @@ import { watch } from 'vue'
 const route = useRoute()
 const lang = ref(route.params.lang ? route.params.lang : 'ua')
 
+
+
 watch(() => route.params, async (toParams, previousParams) => {
     lang.value = toParams.lang ? toParams.lang : 'ua';
 })
@@ -65,13 +67,13 @@ watch(() => route.params, async (toParams, previousParams) => {
         <div class="widget widget_polylang">
             <ul>
                 <li class="ua">
-                    <RouterLink to="/ua">UA</RouterLink>
+                    <RouterLink to="ua">UA</RouterLink>
                 </li>
                 <li class="ru">
-                    <RouterLink to="/ru">RU</RouterLink>
+                    <RouterLink to="ru">RU</RouterLink>
                 </li>
                 <li class="en">
-                    <RouterLink to="/en">EN</RouterLink>
+                    <RouterLink to="en">EN</RouterLink>
                 </li>
             </ul>
         </div>
@@ -82,10 +84,14 @@ watch(() => route.params, async (toParams, previousParams) => {
         <div>
             <ul class="menu">
                 <li>
-                    <RouterLink to="/">Головна</RouterLink>
+                    <template v-if="lang === 'ua'"><RouterLink to="/ua">Головна</RouterLink></template>
+                    <template v-if="lang === 'ru'"><RouterLink to="/ru">Главная</RouterLink></template>
+                    <template v-if="lang === 'en'"><RouterLink to="/en">Home</RouterLink></template>
                 </li>
                 <li>
-                    <RouterLink to="/portfolio/">Портфолiо</RouterLink>
+                    <template v-if="lang === 'ua'"><RouterLink to="/portfolio/ua">Портфолiо</RouterLink></template>
+                    <template v-if="lang === 'ru'"><RouterLink to="/portfolio/ru">Портфолио</RouterLink></template>
+                    <template v-if="lang === 'en'"><RouterLink to="/portfolio/en">Portfolio</RouterLink></template>
                 </li>
                 <li><a>Калькулятор</a></li>
                 <li><a>Послуги</a>
@@ -118,7 +124,14 @@ watch(() => route.params, async (toParams, previousParams) => {
         <b class="f"></b>
     </div>
 
-    <b class="a-up"><a href="#top-block" class="scrollto"><b></b><span>Нагору</span></a></b>
+    <b class="a-up">
+        <a href="#top-block" class="scrollto"><b></b><span>
+                <template v-if="lang === 'ua'">Нагору</template>
+                <template v-if="lang === 'ru'">Вверх</template>
+                <template v-if="lang === 'en'">Up</template>
+            </span>
+        </a>
+    </b>
 
 
 

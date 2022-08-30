@@ -1,9 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 
-// const lang = {
-//   props: ['id'],
-// }
+
 
 const router = createRouter({
 

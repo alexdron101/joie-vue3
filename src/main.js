@@ -10,5 +10,4 @@ app.use(router)
 // Replace -> app.mount('#app')
 router.isReady().then(() => {
   app.mount('#app')
-  console.log("app.mount('#app')")
 })
