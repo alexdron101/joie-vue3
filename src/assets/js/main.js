@@ -2,12 +2,6 @@
 export const startMain = () => {
 
 
-
-
-
-
-
-
   window.addEventListener('scroll', function () {
 
 

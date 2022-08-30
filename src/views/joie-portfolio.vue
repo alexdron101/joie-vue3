@@ -21,9 +21,9 @@ onMounted(() => {
   for (let anchor of anchors) {
     anchor.addEventListener('click', function (e) {
       e.preventDefault()
-      
+
       const blockID = anchor.getAttribute('href').substr(1)
-      
+
       document.getElementById(blockID).scrollIntoView({
         behavior: 'smooth',
         block: 'start'
@@ -83,14 +83,19 @@ onMounted(() => {
 
 
 
+
       <div id="first-block" class="lust-works portfolio all-works">
 
         <span class="label">WORKS</span>
-        <h2>
-          <template v-if="lang === 'ua'">Нашi проекти</template>
-          <template v-if="lang === 'ru'">Наши проекты</template>
-          <template v-if="lang === 'en'">Our projects</template>
-        </h2>
+
+        <ul id="filters" class="clearfix">
+          <li><span class="filter active" data-filter=".visitka, .korp, .land, .i, .cat">Всі</span></li>
+          <li><span class="filter" data-filter=".visitka">Сайт візитівка</span></li>
+          <li><span class="filter" data-filter=".korp">Корпоративний сайт</span></li>
+          <li><span class="filter" data-filter=".land">Landing page</span></li>
+          <li><span class="filter" data-filter=".i">Інтернет магазин</span></li>
+          <li><span class="filter" data-filter=".cat">Сайт каталог</span></li>
+        </ul>
 
         <div id="portfoliolist" class="portfolio-area">
 
@@ -101,10 +106,10 @@ onMounted(() => {
               <div class="portfolio">
                 <img :src="'https://new.joie.com.ua/storage/' + item.image">
                 <span>
-                  <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer" >{{ item.link }}</a>
-                  <p v-if="lang === 'ua'">{{ item.title_ua }}</p>
-                  <p v-if="lang === 'ru'">{{ item.title_ru }}</p>
-                  <p v-if="lang === 'en'">{{ item.title_en }}</p>
+                  <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{  item.link  }}</a>
+                  <p v-if="lang === 'ua'">{{  item.title_ua  }}</p>
+                  <p v-if="lang === 'ru'">{{  item.title_ru  }}</p>
+                  <p v-if="lang === 'en'">{{  item.title_en  }}</p>
                 </span>
               </div>
             </template>
