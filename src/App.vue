@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { RouterLink } from 'vue-router'
 import { startBrain } from './assets/js/brain.js'
+import { startCursor } from './assets/js/cursor.js'
 import { startMain } from './assets/js/main.js'
 import { ref, onMounted } from 'vue'
 import { watch } from 'vue'
@@ -34,13 +35,16 @@ if (lang.value === '') {
 
 
 onMounted(() => {
+
   startBrain();
   startMain();
+  startCursor();
 })
 
 /* Следит за изменениями параметров роута и вообще всех параметров которые сюда запишешь*/
 
 watch(() => route.params, async (toParams, previousParams) => {
+  
   lang.value = toParams.lang ? toParams.lang : 'ua';
   localStorage.setItem('lang', lang.value)
   document.body.classList.remove('ua', 'ru', 'en')

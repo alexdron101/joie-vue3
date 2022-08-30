@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { watch } from 'vue'
-
+import { startCursor } from '../assets/js/cursor.js'
 
 const works = ref(0)
 const route = useRoute()
@@ -14,6 +14,22 @@ watch(() => route.params, async (toParams, previousParams) => {
 
 
 onMounted(() => {
+  startCursor();
+  window.scrollTo(0, 0)
+  const anchors = document.querySelectorAll('a[href*="#"]')
+
+  for (let anchor of anchors) {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault()
+      
+      const blockID = anchor.getAttribute('href').substr(1)
+      
+      document.getElementById(blockID).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    })
+  }
   document.body.classList.add('page-small')
   /* Начало импорт АПИ*/
   fetch('https://new.joie.com.ua/api/get-works')
@@ -42,7 +58,7 @@ onMounted(() => {
 
         <h1>JOIE WEB AGENCY</h1>
         <h2>
-          <template v-if="lang === 'ua'">Наше <br>портфлiо</template>
+          <template v-if="lang === 'ua'">Наше <br>портфолiо</template>
           <template v-if="lang === 'ru'">Наше<br>Портфолио</template>
           <template v-if="lang === 'en'">Our<br>Portfolio</template>
         </h2>
@@ -50,15 +66,15 @@ onMounted(() => {
         <div class="span"><span id="typed-en"></span><span class="typed-cursor"></span></div>
 
         <a class="a23 magic-hover magic-hover__square forma-up">
-          <template v-if="lang === 'ua'">Залишити заявку</template>
-          <template v-if="lang === 'ru'">Оставить заявку</template>
-          <template v-if="lang === 'en'">Gat a quote</template>
+          <template v-if="lang === 'ua'"><span>Залишити заявку</span></template>
+          <template v-if="lang === 'ru'"><span>Оставить заявку</span></template>
+          <template v-if="lang === 'en'"><span>Gat a quote</span></template>
         </a>
 
 
 
 
-        <a href="#work" class="scrollto first-a-scroll"><b></b></a>
+        <a href="#first-block" class="scrollto first-a-scroll"><b></b></a>
       </div>
     </div>
 
@@ -67,10 +83,14 @@ onMounted(() => {
 
 
 
-      <div id="first-block" class="lust-works">
+      <div id="first-block" class="lust-works portfolio all-works">
 
         <span class="label">WORKS</span>
-        <h2></h2>
+        <h2>
+          <template v-if="lang === 'ua'">Нашi проекти</template>
+          <template v-if="lang === 'ru'">Наши проекты</template>
+          <template v-if="lang === 'en'">Our projects</template>
+        </h2>
 
         <div id="portfoliolist" class="portfolio-area">
 
@@ -81,7 +101,7 @@ onMounted(() => {
               <div class="portfolio">
                 <img :src="'https://new.joie.com.ua/storage/' + item.image">
                 <span>
-                  <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{ item.link }}</a>
+                  <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer" >{{ item.link }}</a>
                   <p v-if="lang === 'ua'">{{ item.title_ua }}</p>
                   <p v-if="lang === 'ru'">{{ item.title_ru }}</p>
                   <p v-if="lang === 'en'">{{ item.title_en }}</p>

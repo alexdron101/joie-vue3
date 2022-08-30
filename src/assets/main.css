@@ -1,5 +1,19 @@
-.brain-mute canvas#canvas {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+body.night .lust-works {
+  background: linear-gradient(0deg, #181818, #0d0d0d);
+}
+.lust-works.portfolio {
+  margin-bottom: -200px;
+  background: linear-gradient(0deg, #efefef, white);
+  padding-bottom: 207px;
+}
+.page-small #canvas-block {
+  transform: scale(0.6);
+  top: -6%;
+}
 
+.brain-mute canvas#canvas {
   animation:brain-mute  1s infinite;
 }
 
@@ -251,6 +265,11 @@ body.night div#about-us h2 ~ span p {
   background: #0d0d0d;
   color: #fff;
 }
+body.night ul.menu > li ~ li a {color: #fff;}
+body.night ul.menu > li ~ li a {color: #fff;}
+body.night .menu .router-link-active {
+  color: #ff2323;
+}
 body.night div#about-us h2 ~ span p img {
   background: #141414;
 }
@@ -268,9 +287,7 @@ body.night .team span {
   padding: 15px;
   color: #fff;
 }
-body.night .lust-works {
-  background: #0d0d0d;
-}
+
 body.night div#first-block::before {
   background: linear-gradient( 177deg, rgb(255 255 255 / 0%) 50%, #0d0d0d 51%);
 }
@@ -671,36 +688,15 @@ div#forma-back {
   justify-content: center;
   flex-direction: column;
 }
-.menu.lip a.a23:hover::after {
-  background: #f22828;
-}
-.menu.lip a.a23:hover span {
-  color: #fff;
-}
-.menu a.a23 {
-  position: absolute;
-  right: calc(14% + 140px);
-  left: auto;
-  top: 28px;
-  opacity: 0;
-  background: #ededed;
-}
-.menu a.a23 span {
-  color: #000;
-}
-.menu a.a23::after {
-  background: #dbdbdb;
-}
-
 .menu.lip a.a23 {
   opacity: 1;
-  top: 8px;
+  top: 0px;
 }
 .home-banner a.first-a-scroll {
   position: absolute;
   width: 83px;
   height: 83px;
-  left: calc(50% - 41px);
+  left: calc(100% - 41px);
   bottom: 35px;
   /* border: 1px solid #000; */
   padding: 20px;
@@ -1236,11 +1232,7 @@ div.home-banner.small {
   padding: 190px 14%;
   padding-bottom: 79px;
 }
-div.home-banner.small canvas#canvas {
-  top: -2%;
-  right: 3%;
-  transform: scale(0.7);
-}
+
 div.home-banner.small h2 {
   font-size: 355%;
 }
@@ -1269,27 +1261,13 @@ section#work::before {
   height: 100px;
   background: linear-gradient( 177deg, rgb(255 255 255 / 0%) 50%, white 51%);
 }
-.menu .router-link-active::before {
-  content: '';
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #999999;
-  left: -15px;
-  top: 16px;
-  transform: rotate(45deg);
+ul.menu li {
+  position: relative;
 }
-.menu .router-link-active::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 2px;
-  background: #999999;
-  left: -35px;
-  top: 18px;
-}
+ul.menu > li ~ li a:hover {color: #ff2323;}
 .menu .router-link-active {
-  position:relative;
+  position: relative;
+  color: #ff2323;
 }
 
 section#work #portfoliolist .portfolio {
@@ -1683,16 +1661,28 @@ body, input, textarea, button, .button, .faux-button, .wp-block-button__link, .w
 img {
   width: 100%;
 }
-canvas#canvas {
-  z-index: 1;
-  width: 39vw;
-  height: 39vw;
-  background: transparent;
-  display: block;
+.canvas-block {
   position: absolute;
-  top: 9%;
-  right: 6%;
+  width: 100%;
+  max-width: 1920px;
+  left: auto;
+  top: 0;
+  background: transparent;
+  display: flex;
+  height: auto;
+  padding: 0;
+  height: 100vh;
 }
+#canvas-block {
+  width: 800px;
+  height: 800px;
+  position: absolute;
+  right: 4%;
+  top: calc(50% - 400px);
+  transition: 0.3s;
+  transform: scale(1);
+}
+
 .scroll-progress {
   width: 0px;
   height: 3px;
@@ -2553,6 +2543,8 @@ a.a23:hover::after {
 .home-banner {
   padding: 14%;
   position: relative;
+  width: 50%;
+  padding-right: 0;
 }
 .home-banner h1 {
   font-size: 155%;
@@ -2605,6 +2597,11 @@ body.no-scroll {
 .widget_nav_menu .menu.open {
   right: 0;
 }
+ul.menu > li ~ li a.a23 {
+  margin: 14px 0px;
+  margin-bottom: 13px;
+  padding: 15px 40px;
+}
 .widget_nav_menu .menu {
   position: fixed;
   right: -50%;
@@ -2652,6 +2649,39 @@ body.no-scroll {
   top: 0;
   z-index: 9;
   transition: 0.6s;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  justify-content: space-between;
+}
+ul.menu > li ~ li a {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  /* text-transform: uppercase; */
+  letter-spacing: 1px;
+  margin: 17px 14px;
+  margin-top: 18px;
+  display: table;
+  text-decoration: none;
+  color: #000;
+  padding: 10px 10px;
+}
+ul.menu li:hover ul{display:block;z-index: 1;opacity: 1;}
+ul.menu ul {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #fff;
+  padding: 17px 35px;
+  left: -36px;
+  width: 400px;
+  transition: 0.4s;
+  top: 60px;
+  display:none;
+  z-index: -1;
+  opacity: 0;
+  box-shadow: 0px 0px 41px -12px #dbdbdb;
 }
 .menu .logo img {
   width: 144px;
@@ -2840,18 +2870,8 @@ bottom:auto;
 span.label {
   font-size: 200px;
 }
-canvas#canvas {
-  width: 400px;
-  top: 260px;
-  height: 400px;
-}
-div.home-banner.small canvas#canvas {
-  top: 195px;
-  right: 200px;
-  transform: none;
-  width: 300px;
-  height: 300px;
-}
+
+
 .menu {
   max-width: 1920px;
   margin: 0 auto;
@@ -2865,9 +2885,15 @@ div.home-banner.small canvas#canvas {
   left: auto;
 }
 }
-
+@media(max-width:1800px){
+  #canvas-block {
+    transform: scale(0.6);
+    right: 0%;
+}
+}
 
 @media(max-width:1600px){
+
 div#forma {
   top: 10vh;
 }
@@ -2915,17 +2941,6 @@ span.label {
 .widget_nav_menu .menu {
   padding: 122px 71px;
 }
-canvas#canvas {
-  top: 8vh;
-  right: 3%;
-  transform: scale(0.7);
-}
-
-div.home-banner.small canvas#canvas {
-  top: calc(50% - 17vw);
-  right: 3%;
-  transform: scale(0.7);
-}
 section#work #portfoliolist .portfolio p {
   font-size: 14px;
   font-weight: 100;
@@ -2934,6 +2949,16 @@ section#work #portfoliolist .portfolio p {
 
 
 @media(max-width:1400px){
+  .home-banner a.first-a-scroll {
+    left: calc(84% - 41px);
+}
+  .home-banner {
+    width: 60%;
+}
+  #canvas-block {
+    transform: scale(0.6);
+    right: -10%;
+}
 div#app_calc .el-col-24 button span {
   font-size: 12px;
 }
@@ -2962,6 +2987,11 @@ div#footer-in span.span-b ul {
 
 
 @media(max-width:1200px){
+  #canvas-block {
+    transform: scale(0.4);
+    right: -21%;
+    top: calc(43% - 400px);
+}
 .a-up.act {
   bottom: 0%;
 }
@@ -3037,16 +3067,6 @@ div#footer-in span.span-a p {
 }
 div#footer-in span::after {
   right: 9%;
-}
-canvas#canvas {
-  top: 18vh;
-  right: 0%;
-  transform: scale(0.7);
-}
-.home-banner canvas#canvas {
-  top: 10vh;
-  right: 0%;
-  transform: scale(0.7);
 }
 h2 {
   font-size: 36px;
@@ -3252,10 +3272,22 @@ div#footer-in {
   display: grid;
   grid-template-columns: 50% 50%;
 }
-
 }
 
 @media(max-width:800px){
+  .home-banner a.first-a-scroll {
+    left: calc(50% - 41px);
+    bottom: -41px;
+}
+#canvas-block {
+  width: 800px;
+  height: 800px;
+  right: auto;
+  left: calc(50% - 400px);
+  top: 30px;
+  transform: scale(0.3);
+  margin-left: 0;
+}
 div#footer-in span.span-b a {
   margin: 0;
 }
@@ -3479,23 +3511,13 @@ li.call-top {
   list-style: none;
   display: none;
 }
-.home-banner canvas#canvas {
-  top: 0;
-  left: calc(50% - 160px);
-  right: auto;
-  transform: scale(1);
-  position: relative;
-  margin: 0;
-  padding: 0;
-  width: 320px;
-  height: 320px;
-}
 .home-banner {
   padding: 90px 0px;
   padding-top: 95px;
   width: 100%;
   margin: 0 auto;
   text-align: center;
+  padding-bottom: 300px;
 }
 a.a23 {
   padding: 12px 26px;
@@ -3633,9 +3655,7 @@ div#about-us div .span ~ span h3 {
 .menu .router-link-active::after {
   top: 11px;
 }
-.menu .router-link-active::before {
-  top: 9px;
-}
+
 .widget_nav_menu .menu {
   padding: 105px 71px;
 }

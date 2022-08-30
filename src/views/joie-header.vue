@@ -19,6 +19,7 @@ watch(() => route.params, async (toParams, previousParams) => {
     
     
     <template>
+         <div class="cursor"></div>
     <header>
 
         <span class="day-night">
@@ -26,40 +27,51 @@ watch(() => route.params, async (toParams, previousParams) => {
             <b></b>
             <img src="/src/assets/images/night.png">
         </span>
-
-        <div class="menu">
-            <a href="/" class="logo"><img src="/src/assets/images/logo-small.png"></a>
-
-            <li class="call-top"><a href="#." class="call-top"><img src="/src/assets/images/call.png"></a>
+        <ul class="menu">
+            <li><a href="/" class="logo"><img src="/src/assets/images/logo-small.png"></a></li>
+            <li>
+                <template v-if="lang === 'ua'">
+                    <RouterLink to="/ua">Головна</RouterLink>
+                </template>
+                <template v-if="lang === 'ru'">
+                    <RouterLink to="/ru">Главная</RouterLink>
+                </template>
+                <template v-if="lang === 'en'">
+                    <RouterLink to="/en">Home</RouterLink>
+                </template>
+            </li>
+            <li>
+                <template v-if="lang === 'ua'">
+                    <RouterLink to="/portfolio/ua">Портфолiо</RouterLink>
+                </template>
+                <template v-if="lang === 'ru'">
+                    <RouterLink to="/portfolio/ru">Портфолио</RouterLink>
+                </template>
+                <template v-if="lang === 'en'">
+                    <RouterLink to="/portfolio/en">Portfolio</RouterLink>
+                </template>
+            </li>
+            <li><a>Калькулятор</a></li>
+            <li><a>Послуги</a>
                 <ul>
-                    <li><a href="tel:+380984543099"><img src="/src/assets/images/call.png"> +38-098-4543-099</a></li>
-                    <li><a href="tel:+380505739439"><img src="/src/assets/images/call.png"> +38-050-5739-439</a></li>
-                    <li><a href="viber://chat?number=+380984543099"><img src="/src/assets/images/viber.png"> Viber
-                            Call</a></li>
-                    <li><a target="blank" href="https://t.me/webjoie" rel="noopener noreferrer"><img
-                                src="/src/assets/images/telegram.png"> Telegram Call</a></li>
-                    <li><a target="blank" href="https://wa.me/380984543099" rel="noopener noreferrer"><img
-                                src="/src/assets/images/whatsapp.png"> WhatsApp Call</a></li>
-                    <li><a><img src="/src/assets/images/mail.png"> info@joie.com.ua</a></li>
+                    <li><a>Розробка сайту</a></li>
+                    <li><a>Розробка Landing page</a></li>
+                    <li><a>Розробка Iнтернет магазину</a></li>
+                    <li><a>Контекстна реклама</a></li>
+                    <li><a>Розробка логотипу</a></li>
+                    <li><a>Розробка фiрмового стилю</a></li>
+                    <li><a>SEO просування</a></li>
                 </ul>
             </li>
-            <a class="a23 magic-hover magic-hover__square forma-up">
-                <span>
-                    <template v-if="lang === 'ua'">Залишити заявку</template>
-                    <template v-if="lang === 'ru'">Оставить заявку</template>
-                    <template v-if="lang === 'en'">Get a quote</template>
-                </span>
-            </a>
-            <a class="b-menu magic-hover magic-hover__square"><s>
-                    <template v-if="lang === 'ua'">Меню</template>
-                    <template v-if="lang === 'ru'">Меню</template>
-                    <template v-if="lang === 'en'">Menu</template>
-                </s>
-                <b></b>
-                <b></b>
-                <b></b>
-            </a>
-        </div>
+            <li><a>Вiдгуки</a></li>
+            <li><a>Контакти</a></li>
+            <li><a class="a23 magic-hover magic-hover__square forma-up">
+                    <template v-if="lang === 'ua'"><span>Залишити заявку</span></template>
+                    <template v-if="lang === 'ru'"><span>Оставить заявку</span></template>
+                    <template v-if="lang === 'en'"><span>Gat a quote</span></template>
+                </a></li>
+        </ul>
+
         <div class="scroll-progress" id="myBar"></div>
 
 
@@ -80,36 +92,7 @@ watch(() => route.params, async (toParams, previousParams) => {
 
     </header>
 
-    <div class="widget-content widget_nav_menu">
-        <div>
-            <ul class="menu">
-                <li>
-                    <template v-if="lang === 'ua'"><RouterLink to="/ua">Головна</RouterLink></template>
-                    <template v-if="lang === 'ru'"><RouterLink to="/ru">Главная</RouterLink></template>
-                    <template v-if="lang === 'en'"><RouterLink to="/en">Home</RouterLink></template>
-                </li>
-                <li>
-                    <template v-if="lang === 'ua'"><RouterLink to="/portfolio/ua">Портфолiо</RouterLink></template>
-                    <template v-if="lang === 'ru'"><RouterLink to="/portfolio/ru">Портфолио</RouterLink></template>
-                    <template v-if="lang === 'en'"><RouterLink to="/portfolio/en">Portfolio</RouterLink></template>
-                </li>
-                <li><a>Калькулятор</a></li>
-                <li><a>Послуги</a>
-                    <ul>
-                        <li><a>Розробка сайту</a></li>
-                        <li><a>Розробка Landing page</a></li>
-                        <li><a>Розробка Iнтернет магазину</a></li>
-                        <li><a>Контекстна реклама</a></li>
-                        <li><a>Розробка логотипу</a></li>
-                        <li><a>Розробка фiрмового стилю</a></li>
-                        <li><a>SEO просування</a></li>
-                    </ul>
-                </li>
-                <li><a>Вiдгуки</a></li>
-                <li><a>Контакти</a></li>
-            </ul>
-        </div>
-    </div>
+
 
     <div id="body-back-fon"></div>
 

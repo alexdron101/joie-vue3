@@ -8,7 +8,6 @@ export const startMain = () => {
 
 
 
-
   window.addEventListener('scroll', function () {
 
 
@@ -133,7 +132,8 @@ export const startMain = () => {
       }
     });
   }
-
+  
+/*
   document.querySelector("div#body-back-fon").addEventListener("click", function (event) {
     document.querySelector('a.b-menu').classList.remove('active');
     document.querySelector('.widget_nav_menu .menu').classList.remove('open');
@@ -147,6 +147,7 @@ export const startMain = () => {
     document.querySelector('div#body-back-fon').classList.remove('act');
     document.querySelector('body').classList.remove('no-scroll');
   });
+*/
 
   let scrollpos = window.scrollY
 

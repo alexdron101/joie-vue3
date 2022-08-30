@@ -10,8 +10,8 @@ export const startBrain = () => {
   /* Canvas Start Brain*/
   const canvas = document.querySelector('canvas');
   const ctx = canvas.getContext('2d');
-  canvas.width = 800;
-  canvas.height = 800;
+  canvas.width = document.getElementById('canvas-block').clientHeight;
+  canvas.height = document.getElementById('canvas-block').clientWidth;
 
 
 

@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { watch } from 'vue'
+import { startCursor } from '../assets/js/cursor.js'
 
 const works = ref(0)
 const pages = ref(0)
@@ -14,6 +15,23 @@ watch(() => route.params, async (toParams, previousParams) => {
 
 
 onMounted(() => {
+  window.scrollTo(0, 0)
+  startCursor();
+  const anchors = document.querySelectorAll('a[href*="#"]')
+
+  for (let anchor of anchors) {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault()
+      
+      const blockID = anchor.getAttribute('href').substr(1)
+      
+      document.getElementById(blockID).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    })
+  }
+
   document.body.classList.remove('page-small')
   
   /* Начало импорт АПИ*/
@@ -86,7 +104,7 @@ onMounted(() => {
               <div class="portfolio">
                 <img :src="'https://new.joie.com.ua/storage/' + item.image">
                 <span>
-                  <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{ item.link }}</a>
+                  <a class="magic-hover magic-hover__square" target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{ item.link }}</a>
                   <p v-if="lang === 'ua'">{{ item.title_ua }}</p>
                   <p v-if="lang === 'ru'">{{ item.title_ru }}</p>
                   <p v-if="lang === 'en'">{{ item.title_en }}</p>
