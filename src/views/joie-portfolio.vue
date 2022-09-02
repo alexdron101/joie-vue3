@@ -3,10 +3,32 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { watch } from 'vue'
 import { startCursor } from '../assets/js/cursor.js'
+import { reactive, computed } from 'vue'
 
-const works = ref(0)
+
+const works = ref([])
 const route = useRoute()
 const lang = ref(route.params.lang ? route.params.lang : 'ua')
+const currentFilter = ref('all')
+
+
+
+const filtered_works = computed(() => {
+  return works.value.filter((item) => item.is_all_works === 1 || item.is_is_published === 1)  
+})
+
+
+
+function setFilter() {
+  alert('ss');
+  filtered_works = computed(() => {
+  return works.value.filter((item) => item.is_all_works === 1 || item.is_is_published === 1)  
+})
+  console.log(filtered_works);
+}
+
+
+
 
 watch(() => route.params, async (toParams, previousParams) => {
   lang.value = toParams.lang ? toParams.lang : 'ua';
@@ -30,7 +52,13 @@ onMounted(() => {
       })
     })
   }
+
+
   document.body.classList.add('page-small')
+
+
+
+
   /* Начало импорт АПИ*/
   fetch('https://new.joie.com.ua/api/get-works')
     .then(response => response.json())
@@ -38,13 +66,15 @@ onMounted(() => {
       works.value = Object.keys(data).map((key) => data[key]).sort(function (a, b) { return a.weight - b.weight; });
     });
 
+
 })
+
 
 
 
 </script>
     
-    
+  
     
     
     
@@ -88,31 +118,31 @@ onMounted(() => {
 
         <span class="label">WORKS</span>
 
-        <ul id="filters" class="clearfix">
-          <li><span class="filter active" data-filter=".visitka, .korp, .land, .i, .cat">Всі</span></li>
-          <li><span class="filter" data-filter=".visitka">Сайт візитівка</span></li>
-          <li><span class="filter" data-filter=".korp">Корпоративний сайт</span></li>
-          <li><span class="filter" data-filter=".land">Landing page</span></li>
-          <li><span class="filter" data-filter=".i">Інтернет магазин</span></li>
-          <li><span class="filter" data-filter=".cat">Сайт каталог</span></li>
+        <ul id="filters">
+          <li><span class="filter" v-bind:class="{ active: currentFilter === 'all' }" @click="setFilter('all')">Всі</span></li>
+          <li><span class="filter" v-bind:class="{ active: currentFilter === 'visitka' }" @click="setFilter('visitka')">Сайт візитівка</span></li>
+          <li><span class="filter" v-bind:class="{ active: currentFilter === 'korporate' }" @click="setFilter('korporate')">Корпоративний сайт</span></li>
+          <li><span class="filter" v-bind:class="{ active: currentFilter === 'landing' }" @click="setFilter('landing')">Landing page</span></li>
+          <li><span class="filter" v-bind:class="{ active: currentFilter === 'shop' }" @click="setFilter('shop')">Інтернет магазин</span></li>
+          <li><span class="filter" v-bind:class="{ active: currentFilter === 'catalog' }" @click="setFilter('catalog')">Сайт каталог</span></li>
         </ul>
 
         <div id="portfoliolist" class="portfolio-area">
 
 
 
-          <template v-for="item in works" :key="item.weight">
-            <template v-if="item.is_all_works === 1 && item.is_published === 1">
-              <div class="portfolio">
-                <img :src="'https://new.joie.com.ua/storage/' + item.image">
-                <span>
-                  <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{  item.link  }}</a>
-                  <p v-if="lang === 'ua'">{{  item.title_ua  }}</p>
-                  <p v-if="lang === 'ru'">{{  item.title_ru  }}</p>
-                  <p v-if="lang === 'en'">{{  item.title_en  }}</p>
-                </span>
-              </div>
-            </template>
+          <template v-for="item in filtered_works" :key="item.weight">
+
+            <div class="portfolio">
+              <img :src="'https://new.joie.com.ua/storage/' + item.image">
+              <span>
+                <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{  item.link  }}</a>
+                <p v-if="lang === 'ua'">{{  item.title_ua  }}</p>
+                <p v-if="lang === 'ru'">{{  item.title_ru  }}</p>
+                <p v-if="lang === 'en'">{{  item.title_en  }}</p>
+              </span>
+            </div>
+
           </template>
 
 
@@ -128,9 +158,10 @@ onMounted(() => {
 
 
   </div>
+
+
 </template>
-    
-    
-    
-      
+
+
+
     

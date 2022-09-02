@@ -2915,6 +2915,9 @@ span.label {
 }
 
 @media(max-width:1600px){
+#canvas-block {
+    top: -51px;
+}
 
 div#forma {
   top: 10vh;
@@ -3008,11 +3011,18 @@ div#footer-in span.span-b ul {
 }
 
 
+@media(max-width:1300px){
+  .page-small #canvas-block {
+    transform: scale(0.4);
+    top: -77px;
+}
+}
+
 @media(max-width:1200px){
   #canvas-block {
     transform: scale(0.4);
     right: -21%;
-    top: calc(43% - 400px);
+    top: -93px;
 }
 .a-up.act {
   bottom: 0%;
@@ -3153,6 +3163,10 @@ span.day-night {
 
 
 @media(max-width:1024px){
+.page-small #canvas-block {
+    transform: scale(0.3);
+    top: -149px;
+}
 li.call-top{display:none;}
 div#first-block.contakts .b ul {
   grid-template-columns: 50% 50%;
@@ -3203,8 +3217,8 @@ div.home-banner.small h2 {
   line-height: 39px;
 }
 div.home-banner.small {
-  padding: 116px 115px;
-  padding-bottom: 39px;
+  padding: 161px 115px;
+  padding-bottom: 15px;
 }
 div#forma {
   top: 0vh;
@@ -3297,6 +3311,7 @@ div#footer-in {
 }
 
 @media(max-width:800px){
+
   .home-banner a.first-a-scroll {
     left: calc(50% - 41px);
     bottom: -41px;
@@ -3366,10 +3381,13 @@ section#work #portfoliolist .portfolio {
   margin: 0 auto;
 }
 div.home-banner.small {
-  padding: 116px 7px;
-  padding-bottom: 39px;
+    padding: 116px 7px;
+    padding-bottom: 208px;
 }
-
+.page-small #canvas-block {
+  transform: scale(0.2);
+  top: 32px;
+}
 section#work.portfolio.all-works .container {
   width: 100%;
   padding: 50px 45px;

@@ -27,13 +27,6 @@ if (lang.value === '') {
 }
 
 
-
-
-
-
-
-
-
 onMounted(() => {
 
   startBrain();
@@ -65,6 +58,7 @@ watch(() => route.params, async (toParams, previousParams) => {
 <template>
   <Header />
   <Brain />
+
   <router-view v-slot="{ Component, route }">
     <Transition name="fade" mode="out-in">
       <component :is="Component" />
