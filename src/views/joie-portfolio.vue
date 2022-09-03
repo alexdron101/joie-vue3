@@ -4,31 +4,52 @@ import { useRoute } from 'vue-router'
 import { watch } from 'vue'
 import { startCursor } from '../assets/js/cursor.js'
 import { reactive, computed } from 'vue'
+import { shuffle as _shuffle } from 'lodash-es'
 
 
 const works = ref([])
 const route = useRoute()
 const lang = ref(route.params.lang ? route.params.lang : 'ua')
-const currentFilter = ref('all')
+const available_filters = [{
+  title_ua: 'Всі',
+  title_en: 'Всі',
+  title_ru: 'Всі',
+  value: 'is_all_works'
+}, {
+  title_ua: 'Сайт візитівка',
+  title_en: 'Сайт візитівка',
+  title_ru: 'Сайт візитівка',
+  value: 'is_site_visitka_works'
+}, {
+  title_ua: 'Корпоративний сайт',
+  title_en: 'Корпоративний сайт',
+  title_ru: 'Корпоративний сайт',
+  value: 'is_site_korp__works'
+}, {
+  title_ua: 'Landing page',
+  title_en: 'Landing page',
+  title_ru: 'Landing page',
+  value: 'is_landing_works'
+}, {
+  title_ua: 'Інтернет магазин',
+  title_en: 'Інтернет магазин',
+  title_ru: 'Інтернет магазин',
+  value: 'is_shop_works'
+}, {
+  title_ua: 'Сайт каталог',
+  title_en: 'Сайт каталог',
+  title_ru: 'Сайт каталог',
+  value: 'is_portal_works'
+}];
 
-
+const currentFilter = ref('is_all_works')
 
 const filtered_works = computed(() => {
-  return works.value.filter((item) => item.is_all_works === 1 || item.is_is_published === 1)  
-})
+  //console.log('currentFilter.value', currentFilter.value);
+  return works.value.filter((item) => item[currentFilter.value] === 1 || item.is_is_published === 1);
+});
 
-
-
-function setFilter() {
-  alert('ss');
-  filtered_works = computed(() => {
-  return works.value.filter((item) => item.is_all_works === 1 || item.is_is_published === 1)  
-})
-  console.log(filtered_works);
-}
-
-
-
+function setFilter(arg) { currentFilter.value = arg; }
 
 watch(() => route.params, async (toParams, previousParams) => {
   lang.value = toParams.lang ? toParams.lang : 'ua';
@@ -51,34 +72,36 @@ onMounted(() => {
         block: 'start'
       })
     })
+
   }
 
-
   document.body.classList.add('page-small')
-
-
-
 
   /* Начало импорт АПИ*/
   fetch('https://new.joie.com.ua/api/get-works')
     .then(response => response.json())
     .then(data => {
       works.value = Object.keys(data).map((key) => data[key]).sort(function (a, b) { return a.weight - b.weight; });
+      console.log('works.value', works.value);
     });
-
 
 })
 
-
-
-
 </script>
-    
+<script>
+export default {
+  data() {
+    return {
+      show: true
+    }
+  }
+}
+</script>
   
-    
-    
-    
-    <template>
+  
+  
+  
+  <template>
 
   <div>
 
@@ -119,32 +142,31 @@ onMounted(() => {
         <span class="label">WORKS</span>
 
         <ul id="filters">
-          <li><span class="filter" v-bind:class="{ active: currentFilter === 'all' }" @click="setFilter('all')">Всі</span></li>
-          <li><span class="filter" v-bind:class="{ active: currentFilter === 'visitka' }" @click="setFilter('visitka')">Сайт візитівка</span></li>
-          <li><span class="filter" v-bind:class="{ active: currentFilter === 'korporate' }" @click="setFilter('korporate')">Корпоративний сайт</span></li>
-          <li><span class="filter" v-bind:class="{ active: currentFilter === 'landing' }" @click="setFilter('landing')">Landing page</span></li>
-          <li><span class="filter" v-bind:class="{ active: currentFilter === 'shop' }" @click="setFilter('shop')">Інтернет магазин</span></li>
-          <li><span class="filter" v-bind:class="{ active: currentFilter === 'catalog' }" @click="setFilter('catalog')">Сайт каталог</span></li>
+          <template v-for="filter in available_filters">
+            <li>
+              <span class="filter" v-bind:class="{ active: currentFilter === filter.value }"
+                @click="setFilter(filter.value)">
+                {{ filter[`title_${lang}`] }}
+              </span>
+            </li>
+          </template>
         </ul>
+
 
         <div id="portfoliolist" class="portfolio-area">
 
 
+          <TransitionGroup name="fade" >
 
-          <template v-for="item in filtered_works" :key="item.weight">
+              <div v-for="item in filtered_works" :key="item.weight" class="portfolio">
+                <img :src="'https://new.joie.com.ua/storage/' + item.image">
+                <span>
+                  <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{ item.link }}</a>
+                  <p>{{ item[`title_${lang}`] }}</p>
+                </span>
+              </div>
 
-            <div class="portfolio">
-              <img :src="'https://new.joie.com.ua/storage/' + item.image">
-              <span>
-                <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{  item.link  }}</a>
-                <p v-if="lang === 'ua'">{{  item.title_ua  }}</p>
-                <p v-if="lang === 'ru'">{{  item.title_ru  }}</p>
-                <p v-if="lang === 'en'">{{  item.title_en  }}</p>
-              </span>
-            </div>
-
-          </template>
-
+          </TransitionGroup>
 
 
 
@@ -161,7 +183,4 @@ onMounted(() => {
 
 
 </template>
-
-
-
-    
+  
