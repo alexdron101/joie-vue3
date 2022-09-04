@@ -1301,7 +1301,6 @@ section#work #portfoliolist .portfolio {
   /* display: block; */
   float: left;
   overflow: hidden;
-  transition: 0.4s ease-in;
 }
 
 

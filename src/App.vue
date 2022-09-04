@@ -71,92 +71,28 @@ watch(() => route.params, async (toParams, previousParams) => {
 
 
 <style>
-.list-move, /* apply transition to moving elements */
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.5s ease;
-}
-
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
-
-/* ensure leaving items are taken out of layout flow so that moving
-   animations can be calculated correctly. */
-.list-leave-active {
-  position: absolute;
-}
-
-@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
-
-.bounce-enter-active {
-  animation: bounce-in 0.5s;
-}
-
-.bounce-leave-active {
-  animation: bounce-in 0.5s reverse;
-}
-
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-
-  50% {
-    transform: scale(1.25);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-.slide-fade-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(20px);
-  opacity: 0;
-  position: absolute;
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-
-.fade-leave-to {
-  transition: 0.8s;
-  opacity: 0;
-  position: absolute !important;
-  display: none!important;
-}
-
+/* 1. declare transition */
+.fade-move,
+.fade-enter-active,
 .fade-leave-active {
-  transition: 0.8s;
-  opacity: 0;
+  transition: 0.9s;
+  transform: scale(1);
 }
 
-.fade-enter-active {
-  transition: 0.8s;
+/* 2. declare enter from and leave to state */
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
+  transition: 0.9s;
+  transform: scale(0.6);
 }
 
-.fade-enter-to {
-  transition: 2.4s;
-  opacity: 1;
+/* 3. ensure leaving items are taken out of layout flow so that moving
+      animations can be calculated correctly. */
+.fade-leave-active {
+  position: absolute!important;
+  opacity:0;
+  z-index: -1;
 }
+
 </style>

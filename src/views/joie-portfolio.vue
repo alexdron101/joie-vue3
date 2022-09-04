@@ -4,7 +4,6 @@ import { useRoute } from 'vue-router'
 import { watch } from 'vue'
 import { startCursor } from '../assets/js/cursor.js'
 import { reactive, computed } from 'vue'
-import { shuffle as _shuffle } from 'lodash-es'
 
 
 const works = ref([])
@@ -75,7 +74,7 @@ onMounted(() => {
 
   }
 
-  document.body.classList.add('page-small')
+ 
 
   /* Начало импорт АПИ*/
   fetch('https://new.joie.com.ua/api/get-works')
@@ -107,7 +106,7 @@ export default {
 
 
     <div>
-      <div class="home-banner small" id="top-block">
+      <div class="home-banner" id="top-block">
 
         <h1>JOIE WEB AGENCY</h1>
         <h2>
@@ -156,15 +155,15 @@ export default {
         <div id="portfoliolist" class="portfolio-area">
 
 
-          <TransitionGroup name="fade" >
+          <TransitionGroup name="fade">
 
-              <div v-for="item in filtered_works" :key="item.weight" class="portfolio">
-                <img :src="'https://new.joie.com.ua/storage/' + item.image">
-                <span>
-                  <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{ item.link }}</a>
-                  <p>{{ item[`title_${lang}`] }}</p>
-                </span>
-              </div>
+            <div v-for="item in filtered_works" :key="item.weight" class="portfolio">
+              <img :src="'https://new.joie.com.ua/storage/' + item.image">
+              <span>
+                <a target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{ item.link }}</a>
+                <p>{{ item[`title_${lang}`] }}</p>
+              </span>
+            </div>
 
           </TransitionGroup>
 
