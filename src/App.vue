@@ -60,7 +60,7 @@ watch(() => route.params, async (toParams, previousParams) => {
   <Brain />
 
   <router-view v-slot="{ Component, route }">
-    <Transition name="fade" mode="out-in">
+    <Transition name="slide" mode="out-in">
       <component :is="Component" />
     </Transition>
   </router-view>
@@ -71,11 +71,32 @@ watch(() => route.params, async (toParams, previousParams) => {
 
 
 <style>
+.slide-move,
+.slide-enter-active,
+.slide-leave-active {
+  opacity: 1;
+  transition: 1.4s;
+}
+
+/* 2. declare enter from and leave to state */
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transition: 0.4s;
+}
+
+/* 3. ensure leaving items are taken out of layout flow so that moving
+      animations can be calculated correctly. */
+.slide-leave-active {
+    opacity: 0;
+}
+
 /* 1. declare transition */
 .fade-move,
 .fade-enter-active,
 .fade-leave-active {
-  transition: 0.9s;
+  opacity: 1;
+  transition: 1.2s;
   transform: scale(1);
 }
 
@@ -83,16 +104,20 @@ watch(() => route.params, async (toParams, previousParams) => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  transition: 0.9s;
-  transform: scale(0.6);
+  transition: 1.2s;
+  transform: scale(0.8);
 }
 
 /* 3. ensure leaving items are taken out of layout flow so that moving
       animations can be calculated correctly. */
 .fade-leave-active {
-  position: absolute!important;
-  opacity:0;
-  z-index: -1;
+    opacity: 0;
+    width: 26%;
+    float:none;
+    position: absolute!important;
+    transform: scale(0.1);
+    z-index: -1;
+
 }
 
 </style>

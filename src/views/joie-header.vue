@@ -18,10 +18,9 @@ watch(() => route.params, async (toParams, previousParams) => {
 </script>
     
     
-    <template>
-         <div class="cursor"></div>
+<template>
+    <div class="cursor"></div>
     <header>
-
         <span class="day-night">
             <img src="/src/assets/images/day.png">
             <b></b>
@@ -51,7 +50,17 @@ watch(() => route.params, async (toParams, previousParams) => {
                     <RouterLink to="/portfolio/en">Portfolio</RouterLink>
                 </template>
             </li>
-            <li><a>Калькулятор</a></li>
+            <li>
+                <template v-if="lang === 'ua'">
+                    <RouterLink to="/calculator/ua">Калькулятор</RouterLink>
+                </template>
+                <template v-if="lang === 'ru'">
+                    <RouterLink to="/calculator/ru">Калькулятор</RouterLink>
+                </template>
+                <template v-if="lang === 'en'">
+                    <RouterLink to="/calculator/en">Calculator</RouterLink>
+                </template>
+            </li>
             <li><a>Послуги</a>
                 <ul>
                     <li><a>Розробка сайту</a></li>

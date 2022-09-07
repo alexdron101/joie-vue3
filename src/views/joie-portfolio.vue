@@ -11,18 +11,18 @@ const route = useRoute()
 const lang = ref(route.params.lang ? route.params.lang : 'ua')
 const available_filters = [{
   title_ua: 'Всі',
-  title_en: 'Всі',
-  title_ru: 'Всі',
+  title_en: 'All',
+  title_ru: 'Все',
   value: 'is_all_works'
 }, {
   title_ua: 'Сайт візитівка',
-  title_en: 'Сайт візитівка',
-  title_ru: 'Сайт візитівка',
+  title_en: 'Card website',
+  title_ru: 'Сайт визитка',
   value: 'is_site_visitka_works'
 }, {
   title_ua: 'Корпоративний сайт',
-  title_en: 'Корпоративний сайт',
-  title_ru: 'Корпоративний сайт',
+  title_en: 'Corporate website',
+  title_ru: 'Корпоративный сайт',
   value: 'is_site_korp__works'
 }, {
   title_ua: 'Landing page',
@@ -31,12 +31,12 @@ const available_filters = [{
   value: 'is_landing_works'
 }, {
   title_ua: 'Інтернет магазин',
-  title_en: 'Інтернет магазин',
-  title_ru: 'Інтернет магазин',
+  title_en: 'Ecommerce',
+  title_ru: 'Интернет магазин',
   value: 'is_shop_works'
 }, {
   title_ua: 'Сайт каталог',
-  title_en: 'Сайт каталог',
+  title_en: 'Catalog',
   title_ru: 'Сайт каталог',
   value: 'is_portal_works'
 }];
@@ -44,7 +44,6 @@ const available_filters = [{
 const currentFilter = ref('is_all_works')
 
 const filtered_works = computed(() => {
-  //console.log('currentFilter.value', currentFilter.value);
   return works.value.filter((item) => item[currentFilter.value] === 1 || item.is_is_published === 1);
 });
 
@@ -74,7 +73,7 @@ onMounted(() => {
 
   }
 
- 
+  document.body.classList.add('page-small')
 
   /* Начало импорт АПИ*/
   fetch('https://new.joie.com.ua/api/get-works')
@@ -105,8 +104,8 @@ export default {
   <div>
 
 
-    <div>
-      <div class="home-banner" id="top-block">
+   
+      <div class="home-banner small" id="top-block">
 
         <h1>JOIE WEB AGENCY</h1>
         <h2>
@@ -128,7 +127,7 @@ export default {
 
         <a href="#first-block" class="scrollto first-a-scroll"><b></b></a>
       </div>
-    </div>
+    
 
 
     <section id="work">

@@ -1,0 +1,64 @@
+{
+     "1": [
+        {
+            "Title": "Розробка сайту",
+            "NameOfCalcData": "Site",
+            "icon": "fas fa-globe",
+            "isActive":true
+        }
+    ,
+        {
+            "Title": "Розробка Landing page",
+            "NameOfCalcData": "Landing",
+            "Icon": "fas fa-paper-plane",
+            "IsActive": false
+        }
+    ,
+        {
+            "Title": "Розробка магазину",
+            "NameOfCalcData": "Store",
+            "Icon": "fas fa-cart-arrow-down",
+            "IsActive": false
+        }
+    ,
+        {
+            "Title": "Розробка порталу",
+            "NameOfCalcData": "Portal",
+            "Icon": "fas fa-brain",
+            "IsActive": false
+        }
+    ,
+    
+        {
+            "Title": "Контекстна реклама",
+            "NameOfCalcData": "Reklama",
+            "Icon": "fab fa-google",
+            "IsActive": false
+        }
+    ,
+    
+        {
+            "Title": "SEO-просування",
+            "NameOfCalcData": "SEO",
+            "Icon": "fas fa-bullhorn",
+            "IsActive": false
+        }
+    ,
+    
+        {
+            "Title": "Розробка логотипу",
+            "NameOfCalcData": "Logo",
+            "Icon": "fas fa-drafting-compass",
+            "IsActive": false
+        }
+    ,
+    
+        {
+            "Title": "Фірмовий стиль",
+            "NameOfCalcData": "FirmStyle",
+            "Icon": "fas fa-palette",
+            "IsActive": false
+        }
+
+     ]
+}

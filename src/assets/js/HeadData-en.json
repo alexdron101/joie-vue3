@@ -1,0 +1,64 @@
+{
+     "1": [
+        {
+            "Title": "Website Development",
+            "NameOfCalcData": "Site",
+            "icon": "fas fa-globe",
+            "isActive": true
+        }
+    ,
+        {
+            "Title": "Landing page development",
+            "NameOfCalcData": "Landing",
+            "Icon": "fas fa-paper-plane",
+            "IsActive": false
+        }
+    ,
+        {
+            "Title": "Store Development",
+            "NameOfCalcData": "Store",
+            "Icon": "fas fa-cart-arrow-down",
+            "IsActive": false
+        }
+    ,
+        {
+            "Title": "Portal Development",
+            "NameOfCalcData": "Portal",
+            "Icon": "fas fa-brain",
+            "IsActive": false
+        }
+    ,
+    
+        {
+            "Title": "Contextual Advertising",
+            "NameOfCalcData": "Advertisement",
+            "Icon": "fab fa-google",
+            "IsActive": false
+        }
+    ,
+    
+        {
+            "Title": "SEO-promotion",
+            "NameOfCalcData": "SEO",
+            "Icon": "fas fa-bullhorn",
+            "IsActive": false
+        }
+    ,
+    
+        {
+            "Title": "Logo Development",
+            "NameOfCalcData": "Logo",
+            "Icon": "fas fa-drafting-compass",
+            "IsActive": false
+        }
+    ,
+    
+        {
+            "Title": "Corporate identity",
+            "NameOfCalcData": "FirmStyle",
+            "Icon": "fas fa-palette",
+            "IsActive": false
+        }
+
+     ]
+}
