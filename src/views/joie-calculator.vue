@@ -3,12 +3,11 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { watch } from 'vue'
 import { startCursor } from '../assets/js/cursor.js'
-import { axios_min } from '../assets/js/axios.min.js'
-import { element_ui } from '../assets/js/element-ui.js'
 import '../assets/ui.css';
-
-
-
+import axios from 'axios';
+import ElementPlus from 'element-plus';
+import { ElButton, ElRow, ElSlider, ElCheckbox, ElCol } from 'element-plus'
+import 'element-plus/dist/index.css'
 
 
 const route = useRoute()
@@ -22,10 +21,11 @@ watch(() => route.params, async (toParams, previousParams) => {
 })
 
 
+
 onMounted(() => {
 
-
     startCursor();
+
     window.scrollTo(0, 0)
     const anchors = document.querySelectorAll('a[href*="#"]')
 
@@ -67,9 +67,9 @@ onMounted(() => {
         <div class="home-banner small" id="top-block">
             <h1>JOIE WEB AGENCY</h1>
             <h2>
-                <template v-if="lang === 'ua'">Калькулятор</template>
-                <template v-if="lang === 'ru'">Калькулятор</template>
-                <template v-if="lang === 'en'">Calculator</template>
+                <template v-if="lang === 'ua'">Калькулятор<br>вартостi</template>
+                <template v-if="lang === 'ru'">Калькулятор<br>Стоимости</template>
+                <template v-if="lang === 'en'">OUR<br>PRICE LIST</template>
             </h2>
             <div class="span"><span id="typed-en"></span><span class="typed-cursor"></span></div>
             <a class="a23 magic-hover magic-hover__square forma-up">
@@ -81,7 +81,7 @@ onMounted(() => {
         </div>
 
 
-        
+
         <section id="sect1">
             <div id="el5">
                 <div id="app_calc">
@@ -115,11 +115,11 @@ onMounted(() => {
                     <span id="result" class="" data-wow-delay="0s">
                         <a>
                             <h1>Ориентировочная стоимость</h1>
-                            <bold>От {{totalPrice}} грн</bold>
+                            <b>От {{totalPrice}} грн</b>
                         </a>
                         <a>
                             <h1>Срок выполнения</h1>
-                            <bold>От {{totalDays}} дней</bold>
+                            <b>От {{totalDays}} дней</b>
                         </a>
                     </span>
                 </div>
@@ -129,3 +129,111 @@ onMounted(() => {
 
     </div>
 </template>
+
+<script>
+
+
+export default {
+    data() {
+        return {
+            myHead: [],
+            checked1: true,
+            myCalc: [],
+            current: [],
+            currentTitle: "",
+            totalPrice: 0,
+            totalDays: 0,
+            activeClass: "non"
+        };
+    },
+
+
+    mounted() {
+        axios
+            .get("/src/assets/js/HeadData.json")
+            .then(response => {
+                this.myHead = response.data;
+            })
+            .catch(err => {
+                alert(err);
+            });
+
+        axios
+            .get("/src/assets/js/CalcData.json")
+            .then(response => {
+                this.myCalc = response.data;
+                this.current = this.myCalc["Site"];
+                this.currentTitle = "Розробка сайту";
+                this.activeClass = "active";
+            })
+            .catch(err => {
+                alert(err);
+            });
+    },
+    methods: {
+        setCurrent(typ, title, current_index) {
+            this.current = this.myCalc[typ];
+            this.currentTitle = title;
+            this.myHead[1].forEach(function (element) {
+                element.isActive = false;
+            });
+            this.myHead[1][current_index].isActive = true;
+        },
+        calcPrice() {
+            //window.console.log("calcPrice", 1);
+            let t = 0;
+            let y = 0;
+            let y99 = 0;
+            let t99 = 0;
+            for (let i = 0; i < this.current.length; i++) {
+                if (this.current[i].position) {
+                    if (this.current[i].related_calculation) {
+                        let formula = this.current[i].related_calculation;
+
+                        let arr_formula = formula.split('.');//"related_calculation":"price*design.result"
+
+                        let name = arr_formula[0]; // "design"
+                        let name_field = arr_formula[1]; // result
+
+                        this.current.forEach(function (element) {
+                            if (element.name === name) {
+                                t = element[name_field];
+                                window.console.log("t=", name, name_field, t);
+                            };
+                        });
+                        t99 = this.current[i].position * this.current[i].price * t;
+
+
+                    } else {
+
+                        t99 = this.current[i].position * this.current[i].price;
+                    }
+                    window.console.log("t99=", t99);
+
+                    window.console.log("result=", this.current[i].result);
+                    y99 = this.current[i].position * this.current[i].days;
+                } else { t99 = 0; }
+                this.current[i].result = t99;
+            }
+            var totalPrice = 0;
+            var totalDays = 0;
+
+            this.current.forEach(function (element) {
+                window.console.log("element=", element);
+                totalPrice = totalPrice + element.result;
+                window.console.log("totalPrice=", totalPrice);
+                totalDays = totalDays + element.days * element.position;
+            });
+            this.totalPrice = totalPrice;
+            this.totalDays = totalDays;
+
+        }
+    },
+    watch: {
+        current: function () {
+            this.calcPrice();
+        }
+    }
+}
+
+</script>
