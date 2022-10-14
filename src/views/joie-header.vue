@@ -21,6 +21,12 @@ watch(() => route.params, async (toParams, previousParams) => {
 <template>
     <div class="cursor"></div>
     <header>
+        <a class="b-menu magic-hover magic-hover__square"><s>Меню</s>
+            <b></b>
+            <b></b>
+            <b></b>
+        </a>
+
         <span class="day-night">
             <img src="/src/assets/images/day.png">
             <b></b>
@@ -61,15 +67,93 @@ watch(() => route.params, async (toParams, previousParams) => {
                     <RouterLink to="/calculator/en">Calculator</RouterLink>
                 </template>
             </li>
-            <li><a>Послуги</a>
+            <li> <template v-if="lang === 'ua'">
+                    <RouterLink to="/services/ua">Послуги</RouterLink>
+                </template>
+                <template v-if="lang === 'ru'">
+                    <RouterLink to="/services/ru">Услуги</RouterLink>
+                </template>
+                <template v-if="lang === 'en'">
+                    <RouterLink to="/services/en">Services</RouterLink>
+                </template>
                 <ul>
-                    <li><a>Розробка сайту</a></li>
-                    <li><a>Розробка Landing page</a></li>
-                    <li><a>Розробка Iнтернет магазину</a></li>
-                    <li><a>Контекстна реклама</a></li>
-                    <li><a>Розробка логотипу</a></li>
-                    <li><a>Розробка фiрмового стилю</a></li>
-                    <li><a>SEO просування</a></li>
+                    <li>
+                        <template v-if="lang === 'ua'">
+                            <RouterLink to="/services/website/ua">Розробка веб сайту</RouterLink>
+                        </template>
+                        <template v-if="lang === 'ru'">
+                            <RouterLink to="/services/website/ru">Разработка сайта</RouterLink>
+                        </template>
+                        <template v-if="lang === 'en'">
+                            <RouterLink to="/services/website/en">Web site development</RouterLink>
+                        </template>
+                    </li>
+                    <li>
+                        <template v-if="lang === 'ua'">
+                            <RouterLink to="/services/landing/ua">Розробка landing page</RouterLink>
+                        </template>
+                        <template v-if="lang === 'ru'">
+                            <RouterLink to="/services/landing/ru">Разработка landing page</RouterLink>
+                        </template>
+                        <template v-if="lang === 'en'">
+                            <RouterLink to="/services/landing/en">Landing page development</RouterLink>
+                        </template>
+                    </li>
+                    <li>
+                        <template v-if="lang === 'ua'">
+                            <RouterLink to="/services/ecommerce/ua">Розробка Iнтернет магазину</RouterLink>
+                        </template>
+                        <template v-if="lang === 'ru'">
+                            <RouterLink to="/services/ecommerce/ru">Разработка Интернет магазина</RouterLink>
+                        </template>
+                        <template v-if="lang === 'en'">
+                            <RouterLink to="/services/ecommerce/en">Ecommerce</RouterLink>
+                        </template>
+                    </li>
+                    <li>
+                        <template v-if="lang === 'ua'">
+                            <RouterLink to="/services/ads/ua">Контекстна реклама</RouterLink>
+                        </template>
+                        <template v-if="lang === 'ru'">
+                            <RouterLink to="/services/ads/ru">Контекстная реклама</RouterLink>
+                        </template>
+                        <template v-if="lang === 'en'">
+                            <RouterLink to="/services/ads/en">Contextual advertising</RouterLink>
+                        </template>
+                    </li>
+                    <li>
+                        <template v-if="lang === 'ua'">
+                            <RouterLink to="/services/logo/ua">Розробка логотипу</RouterLink>
+                        </template>
+                        <template v-if="lang === 'ru'">
+                            <RouterLink to="/services/logo/ru">Разработка логотипа</RouterLink>
+                        </template>
+                        <template v-if="lang === 'en'">
+                            <RouterLink to="/services/logo/en">Logo development</RouterLink>
+                        </template>
+                    </li>
+                    <li>
+                        <template v-if="lang === 'ua'">
+                            <RouterLink to="/services/brand/ua">Розробка фiрмового стилю</RouterLink>
+                        </template>
+                        <template v-if="lang === 'ru'">
+                            <RouterLink to="/services/brand/ru">Разработка фирменного стиля</RouterLink>
+                        </template>
+                        <template v-if="lang === 'en'">
+                            <RouterLink to="/services/brand/en">Corporate identity development</RouterLink>
+                        </template>
+                    </li>
+                    <li>
+                        <template v-if="lang === 'ua'">
+                            <RouterLink to="/services/seo/ua">SEO просування</RouterLink>
+                        </template>
+                        <template v-if="lang === 'ru'">
+                            <RouterLink to="/services/seo/ru">SEO продвижение</RouterLink>
+                        </template>
+                        <template v-if="lang === 'en'">
+                            <RouterLink to="/services/seo/en">SEO promotion</RouterLink>
+                        </template>
+                    </li>
                 </ul>
             </li>
             <li><a>Вiдгуки</a></li>

@@ -7,10 +7,10 @@ import { startCursor } from '../assets/js/cursor.js'
 const works = ref(0)
 const pages = ref(0)
 const route = useRoute()
-const lang = ref(route.params.lang?route.params.lang:'ua')
+const lang = ref(route.params.lang ? route.params.lang : 'ua')
 
 watch(() => route.params, async (toParams, previousParams) => {
-  lang.value = toParams.lang?toParams.lang:'ua';
+  lang.value = toParams.lang ? toParams.lang : 'ua';
 })
 
 
@@ -22,9 +22,9 @@ onMounted(() => {
   for (let anchor of anchors) {
     anchor.addEventListener('click', function (e) {
       e.preventDefault()
-      
+
       const blockID = anchor.getAttribute('href').substr(1)
-      
+
       document.getElementById(blockID).scrollIntoView({
         behavior: 'smooth',
         block: 'start'
@@ -33,7 +33,7 @@ onMounted(() => {
   }
 
   document.body.classList.remove('page-small')
-  
+
   /* Начало импорт АПИ*/
   fetch('https://new.joie.com.ua/api/get-works')
     .then(response => response.json())
@@ -66,7 +66,7 @@ onMounted(() => {
 
   <div>
 
-    
+
 
     <div>
       <div class="home-banner" id="top-block">
@@ -78,7 +78,7 @@ onMounted(() => {
 
         <a class="a23 magic-hover magic-hover__square forma-up" v-html="pages.id7 && pages.id7['text_' + lang]"></a>
 
-       
+
 
 
         <a href="#work" class="scrollto first-a-scroll"><b></b></a>
@@ -104,7 +104,8 @@ onMounted(() => {
               <div class="portfolio">
                 <img :src="'https://new.joie.com.ua/storage/' + item.image">
                 <span>
-                  <a class="magic-hover magic-hover__square" target="_blank" :href="'http://' + item.link" rel="noopener noreferrer">{{ item.link }}</a>
+                  <a class="magic-hover magic-hover__square" target="_blank" :href="'http://' + item.link"
+                    rel="noopener noreferrer">{{ item.link }}</a>
                   <p v-if="lang === 'ua'">{{ item.title_ua }}</p>
                   <p v-if="lang === 'ru'">{{ item.title_ru }}</p>
                   <p v-if="lang === 'en'">{{ item.title_en }}</p>
@@ -141,53 +142,53 @@ onMounted(() => {
           <div class="a"><img src="/src/assets/images/y1.png">
             <span v-html="pages.id13 && pages.id13['text_' + lang]"></span>
             <a class="readmore" href="/home-ua/poslygi/rozrobka-saity/">{{ (pages.id20 && pages.id20['text_' + lang]) ||
-                ""
+            ""
             }}</a>
           </div>
 
           <div class="a"><img src="/src/assets/images/y2.png">
             <span v-html="pages.id14 && pages.id14['text_' + lang]"></span>
             <a class="readmore" href="/home-ua/poslygi/razrabotka-landing-page/">{{ (pages.id20 && pages.id20['text_' +
-                lang]) || ""
+            lang]) || ""
             }}</a>
           </div>
 
           <div class="a"><img src="/src/assets/images/y3.png">
             <span v-html="pages.id15 && pages.id15['text_' + lang]"></span>
             <a class="readmore" href="/home-ua/poslygi/rozrobka-internet-magaziny/">{{ (pages.id20 && pages.id20['text_'
-                +
-                lang]) || ""
+            +
+            lang]) || ""
             }}</a>
           </div>
 
           <div class="a"><img src="/src/assets/images/y4.png">
             <span v-html="pages.id16 && pages.id16['text_' + lang]"></span>
             <a class="readmore" href="/home-ua/poslygi/kontexstnaya-reklama/">{{ (pages.id20 && pages.id20['text_' +
-                lang]) || ""
+            lang]) || ""
             }}</a>
           </div>
 
           <div class="a"><img src="/src/assets/images/y5.png">
             <span v-html="pages.id17 && pages.id17['text_' + lang]"></span>
             <a class="readmore" href="/home-ua/poslygi/seo-prodvizenie/">{{ (pages.id20 && pages.id20['text_' + lang])
-                ||
-                ""
+            ||
+            ""
             }}</a>
           </div>
 
           <div class="a"><img src="/src/assets/images/y6.png">
             <span v-html="pages.id18 && pages.id18['text_' + lang]"></span>
             <a class="readmore" href="/home-ua/poslygi/razrabotka-logotipa/">{{ (pages.id20 && pages.id20['text_' +
-                lang])
-                || ""
+            lang])
+            || ""
             }}</a>
           </div>
 
           <div class="a"><img src="/src/assets/images/y7.png">
             <span v-html="pages.id19 && pages.id19['text_' + lang]"></span>
             <a class="readmore" href="/home-ua/poslygi/razrabotka-firmennogo-stilya/">{{ (pages.id20 &&
-                pages.id20['text_'
-                + lang]) || ""
+            pages.id20['text_'
+            + lang]) || ""
             }}</a>
           </div>
 
@@ -259,27 +260,43 @@ onMounted(() => {
         </div>
       </div>
 
-    
+
 
       <span v-html="pages.id34 && pages.id34['text_' + lang]"></span>
 
     </section>
 
-    
-      <span v-html="pages.id35 && pages.id35['text_' + lang]"></span>
 
-      <span v-html="pages.id36 && pages.id36['text_' + lang]"></span>
-    
-      <span v-html="pages.id37 && pages.id37['text_' + lang]"></span>
+    <span v-html="pages.id35 && pages.id35['text_' + lang]"></span>
 
-      <span v-html="pages.id38 && pages.id38['text_' + lang]"></span>
- 
+    <section id="sect6" class=""> <span class="label">PRICE</span>
+      <div id="prices" class="prices-home">
+        <span v-html="pages.id36 && pages.id36['text_' + lang]"></span>
+
+        <template v-if="lang === 'ua'">
+          <RouterLink class="a23" to="/calculator/ua"><span>Online Калькулятор вартостi</span></RouterLink>
+        </template>
+        <template v-if="lang === 'ru'">
+          <RouterLink class="a23" to="/calculator/ru"><span>Online Калькулятор стоимости</span></RouterLink>
+        </template>
+        <template v-if="lang === 'en'">
+          <RouterLink class="a23" to="/calculator/en"><span>Online cost calculator</span></RouterLink>
+        </template>
+
+
+      </div>
+    </section>
+
+    <span v-html="pages.id37 && pages.id37['text_' + lang]"></span>
+
+    <span v-html="pages.id38 && pages.id38['text_' + lang]"></span>
 
 
 
 
 
-</div>
+
+  </div>
 </template>
 
 

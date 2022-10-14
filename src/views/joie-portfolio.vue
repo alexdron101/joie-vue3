@@ -80,7 +80,6 @@ onMounted(() => {
     .then(response => response.json())
     .then(data => {
       works.value = Object.keys(data).map((key) => data[key]).sort(function (a, b) { return a.weight - b.weight; });
-      console.log('works.value', works.value);
     });
 
 })

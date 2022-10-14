@@ -1,53 +1,69 @@
 {
      "1":[
         {
-            "Title": "Разработка сайта",
+            "Title_ua": "Розробка сайту",
+            "Title_ru": "Разработка сайта",
+            "Title_en": "Website",
             "NameOfCalcData": "Site",
             "isActive":true
         }
     ,
         {
-            "Title": "Разработка лэндинга",
+            "Title_ua": "Розробка Landing page",
+            "Title_ru": "Разработка лэндинга",
+            "Title_en": "Landing Page",
             "NameOfCalcData": "Landing",
             "isActive":false
         }
     , 
         {
-            "Title": "Разработка магазина",
+            "Title_ua": "Розробка Iнтернет магазину",
+            "Title_ru": "Разработка магазина",
+            "Title_en": "Ecommerce",
             "NameOfCalcData": "Store",
             "isActive":false
         }
     ,
         {
-            "Title": "Разработка портала",
+            "Title_ua": "Розробка портала",
+            "Title_ru": "Разработка портала",
+            "Title_en": "Portal",
             "NameOfCalcData": "Portal",
             "isActive":false
         }
     ,
     
         {
-            "Title": "Контекстная реклама",
+            "Title_ua": "Контекстна реклама",
+            "Title_ru": "Контекстная реклама",
+            "Title_en": "Contextual advertising",
             "NameOfCalcData": "Reklama",
             "isActive":false
         }
     ,
     
         {
-            "Title": "SEO-продвижение",
+            "Title_ua": "SEO просування",
+            "Title_ru": "SEO-продвижение",
+            "Title_en": "SEO promotion",
             "NameOfCalcData": "SEO",
             "isActive":false
         }
     ,
     
         {
-            "Title": "Разработка логотипа",
+            "Title_ua": "Розробка логотипу",
+            "Title_ru": "Разработка логотипа",
+            "Title_en": "Logo development",
             "NameOfCalcData": "Logo",
             "isActive":false
         }
     ,
     
         {
-            "Title": "Фирменный стиль",
+            "Title_ua": "Розробка фiрмового стилю",
+            "Title_ru": "Фирменный стиль",
+            "Title_en": "Corporate identity",
             "NameOfCalcData": "FirmStyle",
             "isActive":false
         }

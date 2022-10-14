@@ -28,7 +28,6 @@ if (lang.value === '') {
 
 
 onMounted(() => {
-
   startBrain();
   startMain();
   startCursor();
@@ -48,7 +47,11 @@ watch(() => route.params, async (toParams, previousParams) => {
     document.body.classList.remove('brain-mute')
   }
   setTimeout(brain_mute, 1000);
+
+  
 })
+
+
 
 </script>
 
