@@ -1,10 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+
 const router = createRouter({
 
   history: createWebHistory(import.meta.env.BASE_URL),
 
   routes: [
+    { path: '/', redirect: '/ua' },
+    {
+      path: '/', redirect: '/ua',
+      name: 'joie-home-ua',
+      component: () => import('../views/joie-home.vue'),
+      props: true,
+      meta: {
+        title_ua: 'Головна - Веб студiя joie',
+        title_ru: 'Главная - Веб студия joie',
+        title_en: 'Home - joie web agency'
+      }
+    },
     {
       path: '/:lang?',
       name: 'joie-home-ua',

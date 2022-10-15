@@ -41,7 +41,6 @@ fetch('https://new.joie.com.ua/api/get-page-home')
 function setCurrent(index) {
     current.value = myCalc.value[myHead.value[1][index]['NameOfCalcData']];
     currentTitle.value = myHead.value[1][index]['Title_' + lang.value];
-    console.log(myHead.value[1][index]['Title_' + lang.value], index, myHead.value);
     myHead.value[1].forEach(function (element) {
         element.isActive = false;
     });
