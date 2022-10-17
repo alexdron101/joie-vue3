@@ -4,10 +4,14 @@ import { useRoute } from 'vue-router'
 import { watch } from 'vue'
 import { startCursor } from '../assets/js/cursor.js'
 
+
+
+
 const works = ref(0)
 const pages = ref(0)
 const route = useRoute()
 const lang = ref(route.params.lang ? route.params.lang : 'ua')
+
 
 watch(() => route.params, async (toParams, previousParams) => {
   lang.value = toParams.lang ? toParams.lang : 'ua';
@@ -17,6 +21,8 @@ watch(() => route.params, async (toParams, previousParams) => {
 onMounted(() => {
   window.scrollTo(0, 0)
   startCursor();
+
+
   const anchors = document.querySelectorAll('a[href*="#"]')
 
   for (let anchor of anchors) {
@@ -52,6 +58,7 @@ onMounted(() => {
       pages.value = formatedData;
     });
 
+
 })
 
 
@@ -74,7 +81,9 @@ onMounted(() => {
         <h1>{{ (pages.id5 && pages.id5['text_' + lang]) || "" }}</h1>
         <h2 v-html="pages.id6 && pages.id6['text_' + lang]"></h2>
 
-        <div class="span"><span id="typed-en"></span><span class="typed-cursor"></span></div>
+        <div class="span">
+          <p>Web joie is <span class="typed-text"></span><span class="cursore">&nbsp;</span></p>
+        </div>
 
         <a class="a23 magic-hover magic-hover__square forma-up" v-html="pages.id7 && pages.id7['text_' + lang]"></a>
 
@@ -121,6 +130,20 @@ onMounted(() => {
           </div>
 
         </div>
+
+        <template v-if="lang === 'ua'">
+          <RouterLink class="a23 magic-hover magic-hover__square" to="/portfolio/ua"><span>Дивитися ще</span>
+          </RouterLink>
+        </template>
+        <template v-if="lang === 'ru'">
+          <RouterLink class="a23 magic-hover magic-hover__square" to="/portfolio/ru"><span>Смотреть еще</span>
+          </RouterLink>
+        </template>
+        <template v-if="lang === 'en'">
+          <RouterLink class="a23 magic-hover magic-hover__square" to="/portfolio/en"><span>All Portfolio</span>
+          </RouterLink>
+        </template>
+
       </div>
     </section>
 
@@ -141,55 +164,93 @@ onMounted(() => {
         <span class="wow fadeInUp">
           <div class="a"><img src="/src/assets/images/y1.png">
             <span v-html="pages.id13 && pages.id13['text_' + lang]"></span>
-            <a class="readmore" href="/home-ua/poslygi/rozrobka-saity/">{{ (pages.id20 && pages.id20['text_' + lang]) ||
-            ""
-            }}</a>
+            <template v-if="lang === 'ua'">
+              <RouterLink to="/services/website/ua">Детальнiше</RouterLink>
+            </template>
+            <template v-if="lang === 'ru'">
+              <RouterLink to="/services/website/ru">Подробнее</RouterLink>
+            </template>
+            <template v-if="lang === 'en'">
+              <RouterLink to="/services/website/en">Ream more</RouterLink>
+            </template>
           </div>
 
           <div class="a"><img src="/src/assets/images/y2.png">
             <span v-html="pages.id14 && pages.id14['text_' + lang]"></span>
-            <a class="readmore" href="/home-ua/poslygi/razrabotka-landing-page/">{{ (pages.id20 && pages.id20['text_' +
-            lang]) || ""
-            }}</a>
+            <template v-if="lang === 'ua'">
+              <RouterLink to="/services/landing-page/ua">Детальнiше</RouterLink>
+            </template>
+            <template v-if="lang === 'ru'">
+              <RouterLink to="/services/landing-page/ru">Подробнее</RouterLink>
+            </template>
+            <template v-if="lang === 'en'">
+              <RouterLink to="/services/landing-page/en">Ream more</RouterLink>
+            </template>
           </div>
 
           <div class="a"><img src="/src/assets/images/y3.png">
             <span v-html="pages.id15 && pages.id15['text_' + lang]"></span>
-            <a class="readmore" href="/home-ua/poslygi/rozrobka-internet-magaziny/">{{ (pages.id20 && pages.id20['text_'
-            +
-            lang]) || ""
-            }}</a>
+            <template v-if="lang === 'ua'">
+              <RouterLink to="/services/ecommerce/ua">Детальнiше</RouterLink>
+            </template>
+            <template v-if="lang === 'ru'">
+              <RouterLink to="/services/ecommerce/ru">Подробнее</RouterLink>
+            </template>
+            <template v-if="lang === 'en'">
+              <RouterLink to="/services/ecommerce/en">Ream more</RouterLink>
+            </template>
           </div>
 
           <div class="a"><img src="/src/assets/images/y4.png">
             <span v-html="pages.id16 && pages.id16['text_' + lang]"></span>
-            <a class="readmore" href="/home-ua/poslygi/kontexstnaya-reklama/">{{ (pages.id20 && pages.id20['text_' +
-            lang]) || ""
-            }}</a>
+            <template v-if="lang === 'ua'">
+              <RouterLink to="/services/ads/ua">Детальнiше</RouterLink>
+            </template>
+            <template v-if="lang === 'ru'">
+              <RouterLink to="/services/ads/ru">Подробнее</RouterLink>
+            </template>
+            <template v-if="lang === 'en'">
+              <RouterLink to="/services/ads/en">Ream more</RouterLink>
+            </template>
           </div>
 
           <div class="a"><img src="/src/assets/images/y5.png">
             <span v-html="pages.id17 && pages.id17['text_' + lang]"></span>
-            <a class="readmore" href="/home-ua/poslygi/seo-prodvizenie/">{{ (pages.id20 && pages.id20['text_' + lang])
-            ||
-            ""
-            }}</a>
+            <template v-if="lang === 'ua'">
+              <RouterLink to="/services/seo/ua">Детальнiше</RouterLink>
+            </template>
+            <template v-if="lang === 'ru'">
+              <RouterLink to="/services/seo/ru">Подробнее</RouterLink>
+            </template>
+            <template v-if="lang === 'en'">
+              <RouterLink to="/services/seo/en">Ream more</RouterLink>
+            </template>
           </div>
 
           <div class="a"><img src="/src/assets/images/y6.png">
             <span v-html="pages.id18 && pages.id18['text_' + lang]"></span>
-            <a class="readmore" href="/home-ua/poslygi/razrabotka-logotipa/">{{ (pages.id20 && pages.id20['text_' +
-            lang])
-            || ""
-            }}</a>
+            <template v-if="lang === 'ua'">
+              <RouterLink to="/services/logo/ua">Детальнiше</RouterLink>
+            </template>
+            <template v-if="lang === 'ru'">
+              <RouterLink to="/services/logo/ru">Подробнее</RouterLink>
+            </template>
+            <template v-if="lang === 'en'">
+              <RouterLink to="/services/logo/en">Ream more</RouterLink>
+            </template>
           </div>
 
           <div class="a"><img src="/src/assets/images/y7.png">
             <span v-html="pages.id19 && pages.id19['text_' + lang]"></span>
-            <a class="readmore" href="/home-ua/poslygi/razrabotka-firmennogo-stilya/">{{ (pages.id20 &&
-            pages.id20['text_'
-            + lang]) || ""
-            }}</a>
+            <template v-if="lang === 'ua'">
+              <RouterLink to="/services/brand/ua">Детальнiше</RouterLink>
+            </template>
+            <template v-if="lang === 'ru'">
+              <RouterLink to="/services/brand/ru">Подробнее</RouterLink>
+            </template>
+            <template v-if="lang === 'en'">
+              <RouterLink to="/services/brand/en">Ream more</RouterLink>
+            </template>
           </div>
 
           <div class="b">
@@ -262,7 +323,23 @@ onMounted(() => {
 
 
 
-      <span v-html="pages.id34 && pages.id34['text_' + lang]"></span>
+      <div id="about-us">
+        <span v-html="pages.id39 && pages.id39['text_' + lang]"></span>
+        <div>
+          <span class="span wow fadeInUp">
+            <span v-html="pages.id40 && pages.id40['text_' + lang]"></span>
+          </span>
+          <span>
+            <span v-html="pages.id41 && pages.id41['text_' + lang]"></span>
+            <a class="forma-up a23">
+              <template v-if="lang === 'ua'"><span>Обговорити проект</span></template>
+              <template v-if="lang === 'ru'"><span>Обсудить проект</span></template>
+              <template v-if="lang === 'en'"><span>Discuss Project</span></template>
+            </a>
+          </span>
+        </div>
+      </div>
+
 
     </section>
 

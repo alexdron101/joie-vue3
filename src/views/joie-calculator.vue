@@ -180,7 +180,9 @@ onMounted(() => {
                 <template v-if="lang === 'ru'">Калькулятор<br>Стоимости</template>
                 <template v-if="lang === 'en'">OUR<br>PRICE LIST</template>
             </h2>
-            <div class="span"><span id="typed-en"></span><span class="typed-cursor"></span></div>
+            <div class="span">
+                <p>Web joie is <span class="typed-text"></span><span class="cursore">&nbsp;</span></p>
+            </div>
             <a class="a23 magic-hover magic-hover__square forma-up">
                 <template v-if="lang === 'ua'"><span>Залишити заявку</span></template>
                 <template v-if="lang === 'ru'"><span>Оставить заявку</span></template>
@@ -287,10 +289,10 @@ onMounted(() => {
         </section>
 
         <section id="sect6" class=""> <span class="label">PRICE</span>
-      <div id="prices" class="prices-home">
-        <span v-html="pages.id36 && pages.id36['text_' + lang]"></span>
-      </div>
-    </section>
+            <div id="prices" class="prices-home">
+                <span v-html="pages.id36 && pages.id36['text_' + lang]"></span>
+            </div>
+        </section>
 
     </div>
 </template>

@@ -138,6 +138,28 @@ const router = createRouter({
         title_ru: 'Услуги - Веб студия joie',
         title_en: 'Services - joie web agency'
       }
+    },
+    {
+      path: '/reviews/:lang?',
+      name: 'joie-reviews',
+      component: () => import('../views/joie-reviews.vue'),
+      props: true,
+      meta: {
+        title_ua: 'Послуги - Веб студiя joie',
+        title_ru: 'Услуги - Веб студия joie',
+        title_en: 'Services - joie web agency'
+      }
+    },
+    {
+      path: '/contacts/:lang?',
+      name: 'joie-contacts',
+      component: () => import('../views/joie-contacts.vue'),
+      props: true,
+      meta: {
+        title_ua: 'Послуги - Веб студiя joie',
+        title_ru: 'Услуги - Веб студия joie',
+        title_en: 'Services - joie web agency'
+      }
     }
   ]
 });

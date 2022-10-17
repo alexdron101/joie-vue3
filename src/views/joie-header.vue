@@ -90,13 +90,13 @@ watch(() => route.params, async (toParams, previousParams) => {
                     </li>
                     <li>
                         <template v-if="lang === 'ua'">
-                            <RouterLink to="/services/landing/ua">Розробка landing page</RouterLink>
+                            <RouterLink to="/services/landing-page/ua">Розробка landing page</RouterLink>
                         </template>
                         <template v-if="lang === 'ru'">
-                            <RouterLink to="/services/landing/ru">Разработка landing page</RouterLink>
+                            <RouterLink to="/services/landing-page/ru">Разработка landing page</RouterLink>
                         </template>
                         <template v-if="lang === 'en'">
-                            <RouterLink to="/services/landing/en">Landing page development</RouterLink>
+                            <RouterLink to="/services/landing-page/en">Landing page development</RouterLink>
                         </template>
                     </li>
                     <li>
@@ -156,8 +156,28 @@ watch(() => route.params, async (toParams, previousParams) => {
                     </li>
                 </ul>
             </li>
-            <li><a>Вiдгуки</a></li>
-            <li><a>Контакти</a></li>
+            <li>
+                <template v-if="lang === 'ua'">
+                    <RouterLink to="/reviews/ua">Вiдгуки</RouterLink>
+                </template>
+                <template v-if="lang === 'ru'">
+                    <RouterLink to="/reviews/ru">Отзывы</RouterLink>
+                </template>
+                <template v-if="lang === 'en'">
+                    <RouterLink to="/reviews/en">Reviews</RouterLink>
+                </template>
+            </li>
+            <li>
+                <template v-if="lang === 'ua'">
+                    <RouterLink to="/contacts/ua">Контакти</RouterLink>
+                </template>
+                <template v-if="lang === 'ru'">
+                    <RouterLink to="/contacts/ru">Контакты</RouterLink>
+                </template>
+                <template v-if="lang === 'en'">
+                    <RouterLink to="/contacts/en">Contacts</RouterLink>
+                </template>
+            </li>
             <li><a class="a23 magic-hover magic-hover__square forma-up">
                     <template v-if="lang === 'ua'"><span>Залишити заявку</span></template>
                     <template v-if="lang === 'ru'"><span>Оставить заявку</span></template>

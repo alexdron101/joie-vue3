@@ -11,6 +11,7 @@ import Footer from './views/joie-footer.vue'
 import Header from './views/joie-header.vue'
 import Brain from './views/brain.vue'
 
+
 const route = useRoute()
 const lang = ref(route.params.lang)
 
