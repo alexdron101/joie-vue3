@@ -1,4 +1,6 @@
+
 export const startMain = () => {
+
 
 
 
@@ -99,71 +101,73 @@ export const startMain = () => {
 
 
 
-};
+  };
 
 
 
 
 
-var toggles = document.querySelectorAll("a.b-menu");
+  var toggles = document.querySelectorAll("a.b-menu");
 
-for (var i = toggles.length - 1; i >= 0; i--) {
-  var toggle = toggles[i];
-  toggleHandler(toggle);
-};
+  for (var i = toggles.length - 1; i >= 0; i--) {
+    var toggle = toggles[i];
+    toggleHandler(toggle);
+  };
 
-function toggleHandler(toggle) {
-  toggle.addEventListener("click", function (e) {
-    e.preventDefault();
-    if (this.classList.contains("active") === true) {
+  function toggleHandler(toggle) {
+    toggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (this.classList.contains("active") === true) {
 
-      this.classList.remove("active");
-      document.querySelector('.widget_nav_menu .menu').classList.remove('open');
-      document.querySelector('div#body-back-fon').classList.remove('act');
-      document.querySelector('body').classList.remove('no-scroll');
-    } else {
-      this.classList.add("active");
-      document.querySelector('.widget_nav_menu .menu').classList.add('open');
-      document.querySelector('div#body-back-fon').classList.add('act');
-      document.body.classList.add('act')
-      document.querySelector('body').classList.add('no-scroll');
-    }
+        this.classList.remove("active");
+        document.querySelector('.menu').classList.remove('open');
+        document.querySelector('div#body-back-fon').classList.remove('act');
+        document.querySelector('body').classList.remove('no-scroll');
+      } else {
+        this.classList.add("active");
+        document.querySelector(' .menu').classList.add('open');
+        document.querySelector('div#body-back-fon').classList.add('act');
+        document.body.classList.add('act')
+        document.querySelector('body').classList.add('no-scroll');
+      }
+    });
+  }
+  
+
+  document.querySelector("div#body-back-fon").addEventListener("click", function (event) {
+    document.querySelector('a.b-menu').classList.remove('active');
+    document.querySelector('.menu').classList.remove('open');
+    document.querySelector('div#body-back-fon').classList.remove('act');
+    document.querySelector('body').classList.remove('no-scroll');
   });
-}
 
-document.querySelector("div#body-back-fon").addEventListener("click", function (event) {
-  document.querySelector('a.b-menu').classList.remove('active');
-  document.querySelector('.widget_nav_menu .menu').classList.remove('open');
-  document.querySelector('div#body-back-fon').classList.remove('act');
-  document.querySelector('body').classList.remove('no-scroll');
-});
+  document.querySelector(".menu").addEventListener("click", function (event) {
+    document.querySelector('a.b-menu').classList.remove('active');
+    document.querySelector('.menu').classList.remove('open');
+    document.querySelector('div#body-back-fon').classList.remove('act');
+    document.querySelector('body').classList.remove('no-scroll');
+  });
 
-document.querySelector(".widget_nav_menu .menu").addEventListener("click", function (event) {
-  document.querySelector('a.b-menu').classList.remove('active');
-  document.querySelector('.widget_nav_menu .menu').classList.remove('open');
-  document.querySelector('div#body-back-fon').classList.remove('act');
-  document.querySelector('body').classList.remove('no-scroll');
-});
 
-let scrollpos = window.scrollY
+  let scrollpos = window.scrollY
 
-const header = document.querySelector(".menu")
-const sc_top = document.querySelector(".a-up")
-const scrollChange = 1
+  const header = document.querySelector(".menu")
+  const sc_top = document.querySelector(".a-up")
+  const scrollChange = 1
 
-const add_class_on_scroll = () => header.classList.add("lip")
-const remove_class_on_scroll = () => header.classList.remove("lip")
+  const add_class_on_scroll = () => header.classList.add("lip")
+  const remove_class_on_scroll = () => header.classList.remove("lip")
 
-const add_class_on_scroll2 = () => sc_top.classList.add("act")
-const remove_class_on_scroll2 = () => sc_top.classList.remove("act")
+  const add_class_on_scroll2 = () => sc_top.classList.add("act")
+  const remove_class_on_scroll2 = () => sc_top.classList.remove("act")
 
-window.addEventListener('scroll', function () {
-  scrollpos = window.scrollY;
+  window.addEventListener('scroll', function () {
+    scrollpos = window.scrollY;
 
-  if (scrollpos >= scrollChange) { add_class_on_scroll(), add_class_on_scroll2() }
-  else { remove_class_on_scroll(), remove_class_on_scroll2() }
+    if (scrollpos >= scrollChange) { add_class_on_scroll(), add_class_on_scroll2() }
+    else { remove_class_on_scroll(), remove_class_on_scroll2() }
 
-});
+  });
 
 
 

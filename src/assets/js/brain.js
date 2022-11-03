@@ -1,13 +1,18 @@
 export const startBrain = () => {
+
+
+
+
   var rrrr = new Array(35);
   var lines = new Array(93);
   var timer = null;
 
-      /* Canvas Start Brain*/
+  /* Canvas Start Brain*/
   const canvas = document.querySelector('canvas');
   const ctx = canvas.getContext('2d');
-  canvas.width = 800;
-  canvas.height = 800;
+  canvas.width = document.getElementById('canvas-block').clientHeight;
+  canvas.height = document.getElementById('canvas-block').clientWidth;
+
 
 
   // Р С™Р С•Р Т‘ Р Т‘Р В»РЎРЏ MOUSE!!!! Р Р…Р В°РЎвЂЎР В°Р В»Р С•-------------------------------------------------
@@ -53,6 +58,7 @@ export const startBrain = () => {
 
   class ball {
 
+
     constructor(goX, goY, razlet, stepCount, size, color, posX, posY, pulse_size, pulse_range, rad_cursor, razlet_ot) {
       this.goX = goX;
       this.goY = goY;
@@ -72,9 +78,10 @@ export const startBrain = () => {
     }
 
 
+
     randomGo() {
       if (this.stepCount == 0) {
-        this.stepCount = Math.floor(200 );
+        this.stepCount = Math.floor(200);
         this.direction = Math.floor(8 * Math.random());
       }
       else {
@@ -169,7 +176,7 @@ export const startBrain = () => {
         mouse.x - this.goX <= -120 ||
         mouse.y - this.goY >= 120 ||
         mouse.y - this.goY <= -120
-      )this.color_a = '#111';
+      ) this.color_a = '#111';
       else {
         this.color_a = '#ff2323';
       }
@@ -227,12 +234,12 @@ export const startBrain = () => {
       // if out coord
 
       if (
-      this.goX +75 < (this.posX - this.razlet) ||
-      this.goX -75 > (this.posX + this.razlet) ||
-      this.goY +75 < (this.posY - this.razlet) ||
-      this.goY -75 > (this.posY + this.razlet))
-      this.goX = this.posX,
-      this.goY = this.posY
+        this.goX + 75 < (this.posX - this.razlet) ||
+        this.goX - 75 > (this.posX + this.razlet) ||
+        this.goY + 75 < (this.posY - this.razlet) ||
+        this.goY - 75 > (this.posY + this.razlet))
+        this.goX = this.posX,
+          this.goY = this.posY
 
     }
 
@@ -281,7 +288,7 @@ export const startBrain = () => {
       [230, 370, 0, 0, 20, '#ff2323', 230, 370],
       [330, 280, 0, 0, 15, '#ff2323', 330, 280]
     ];
-    
+
     rrrrParams.forEach((it, i) => {
       rrrr[i] = new ball(...it);
     });
@@ -322,107 +329,107 @@ export const startBrain = () => {
 
     function create_all_lines() {
       const linesToRounds = [
-          [1, 2],
-          [2, 3],
-          [3, 4],
-          [4, 5],
-          [5, 6],
-          [6, 7],
-          [7, 8],
-          [8, 9],
-          [9, 10],
-          [10, 11],
-          [11, 12],
-          [12, 13],
-          [13, 14],
-          [14, 15],
-          [15, 16],
-          [16, 17],
-          [17, 18],
-          [18, 1],
-          [1, 19],
-          [1, 33],
-          [19, 33],
-          [19, 2],
-          [19, 3],
-          [18, 33],
-          [33, 2],
-          [12, 14],
-          [24, 5],
-          [4, 20],
-          [4, 21],
-          [20, 21],
-          [35, 21],
-          [35, 20],
-          [20, 3],
-          [20, 19],
-          [34, 19],
-          [34, 33],
-          [34, 18],
-          [34, 17],
-          [33, 17],
-          [32, 19],
-          [32, 20],
-          [32, 34],
-          [32, 35],
-          [34, 20],
-          [32, 16],
-          [32, 17],
-          [34, 32],
-          [16, 34],
-          [31, 35],
-          [31, 32],
-          [31, 16],
-          [23, 5],
-          [23, 21],
-          [23, 35],
-          [23, 31],
-          [21, 5],
-          [24, 6],
-          [24, 22],
-          [24, 25],
-          [24, 30],
-          [24, 23],
-          [22, 7],
-          [22, 8],
-          [22, 26],
-          [22, 25],
-          [23, 30],
-          [30, 31],
-          [30, 15],
-          [30, 29],
-          [30, 28],
-          [30, 27],
-          [30, 26],
-          [30, 25],
-          [30, 16],
-          [31, 15],
-          [23, 25],
-          [26, 7],
-          [26, 8],
-          [26, 9],
-          [26, 10],
-          [26, 27],
-          [26, 25],
-          [27, 9],
-          [27, 10],
-          [32, 23],
-          [28, 10],
-          [28, 11],
-          [28, 12],
-          [28, 14],
-          [28, 15],
-          [29, 15],
-          [29, 28],
-          [27, 28],
-          [22, 6]
+        [1, 2],
+        [2, 3],
+        [3, 4],
+        [4, 5],
+        [5, 6],
+        [6, 7],
+        [7, 8],
+        [8, 9],
+        [9, 10],
+        [10, 11],
+        [11, 12],
+        [12, 13],
+        [13, 14],
+        [14, 15],
+        [15, 16],
+        [16, 17],
+        [17, 18],
+        [18, 1],
+        [1, 19],
+        [1, 33],
+        [19, 33],
+        [19, 2],
+        [19, 3],
+        [18, 33],
+        [33, 2],
+        [12, 14],
+        [24, 5],
+        [4, 20],
+        [4, 21],
+        [20, 21],
+        [35, 21],
+        [35, 20],
+        [20, 3],
+        [20, 19],
+        [34, 19],
+        [34, 33],
+        [34, 18],
+        [34, 17],
+        [33, 17],
+        [32, 19],
+        [32, 20],
+        [32, 34],
+        [32, 35],
+        [34, 20],
+        [32, 16],
+        [32, 17],
+        [34, 32],
+        [16, 34],
+        [31, 35],
+        [31, 32],
+        [31, 16],
+        [23, 5],
+        [23, 21],
+        [23, 35],
+        [23, 31],
+        [21, 5],
+        [24, 6],
+        [24, 22],
+        [24, 25],
+        [24, 30],
+        [24, 23],
+        [22, 7],
+        [22, 8],
+        [22, 26],
+        [22, 25],
+        [23, 30],
+        [30, 31],
+        [30, 15],
+        [30, 29],
+        [30, 28],
+        [30, 27],
+        [30, 26],
+        [30, 25],
+        [30, 16],
+        [31, 15],
+        [23, 25],
+        [26, 7],
+        [26, 8],
+        [26, 9],
+        [26, 10],
+        [26, 27],
+        [26, 25],
+        [27, 9],
+        [27, 10],
+        [32, 23],
+        [28, 10],
+        [28, 11],
+        [28, 12],
+        [28, 14],
+        [28, 15],
+        [29, 15],
+        [29, 28],
+        [27, 28],
+        [22, 6]
       ];
-      
+
       linesToRounds.forEach((it, i) => {
-          const { goX: a, goY: b } = rrrr[it[0]-1];
-          const { goX: c, goY: d } = rrrr[it[1]-1];
-          lines[i] = new line("0", 0, a, b, c, d);
-          lines[i].drawline();
+        const { goX: a, goY: b } = rrrr[it[0] - 1];
+        const { goX: c, goY: d } = rrrr[it[1] - 1];
+        lines[i] = new line("0", 0, a, b, c, d);
+        lines[i].drawline();
       })
 
       /*

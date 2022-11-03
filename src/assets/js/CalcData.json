@@ -1,0 +1,571 @@
+{
+    "Site": [
+        {
+            "step": 1,
+            "min": 0,
+            "max": 4,
+            "position": 0,
+            "days": 2,
+            "price": 500,
+            "title":  ["Складність дизайну", "Сложность дизайна", "Design complexity"],
+            "typ": "slider",
+            "name": "design",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["Простий дизайн", "Простой дизайн", "Simple Design"],
+                "2": ["Середній", "Средний", "Medium"],
+                "3": ["Складний", "Сложный", "Complex"],
+                "4": ["Wow дизайн", "Wow дизайн", "Wow design"]
+            },
+            "related_calculation": "uniqpage.position",
+            "result": 0
+        },
+        {
+            "step": 1,
+            "min": 0,
+            "max": 5,
+            "position": 0,
+            "days": 1,
+            "price": 1,
+            "title": ["Кількість унікальних сторінок", "Количество уникальных страниц", "Number of unique pages"],
+            "typ": "slider",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["1-3", "1-3", "1-3"],
+                "2": ["3-7", "3-7", "3-7"],
+                "3": ["7-15", "7-15", "7-15"],
+                "4": ["15-50", "15-50", "15-50"],
+                "5": ["50 i бiльше", "50 и более", "50 and more"]
+            },
+            "name": "uniqpage",
+            "related_calculation": "design.result",
+            "result": 0
+        },
+        {
+            "step": 1,
+            "min": 0,
+            "max": 5,
+            "position": 1,
+            "days": 2,
+            "price": 1000,
+            "title": ["Кількість мовних версій сайту", "Number of language versions of the site"],
+            "marks": {
+                "0": ["1", "1", "1"],
+                "1": ["2", "2", "2"],
+                "2": ["3", "3", "3"],
+                "3": ["4", "4", "4"],
+                "4": ["5", "5", "5"],
+                "5": ["6  i бiльше", "6 и более", "6 and more"]
+            },
+            "typ": "slider",
+            "name": "languages",
+            "result": 0
+        },
+        {
+            "days": 10,
+            "price": 15000,
+            "position":0,
+            "title": ["Рукописна CMS", "Рукописная CMS", "Handwritten CMS"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        {
+            "days": 1,
+            "price": 500,
+            "position":0,
+            "title": ["Форма збору даних", "Форма сбора данных", "Callback form"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        {
+            "days": 1,
+            "price": 1000,
+            "position":0,
+            "title": ["Калькулятор цін","Калькулятор цен","Price calculator"],
+            "typ": "checkbox",
+            "name": "calсulator"
+        }
+    ],
+    "Landing": [
+        {
+            "step": 1,
+            "min": 0,
+            "max": 4,
+            "position": 0,
+            "days": 2,
+            "price": 1000,
+            "title":  ["Складність дизайну", "Сложность дизайна", "Design complexity"],
+            "typ": "slider",
+            "name": "design",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["Простий дизайн", "Простой дизайн", "Simple Design"],
+                "2": ["Середній", "Средний", "Medium"],
+                "3": ["Складний", "Сложный", "Complex"],
+                "4": ["Wow дизайн", "Wow дизайн", "Wow design"]
+            },
+            "related_calculation": "uniqpage.position",
+            "result": 0
+        },
+        {
+            "step": 1,
+            "min": 0,
+            "max": 10,
+            "position": 1,
+            "days": 1,
+            "price": 0.02,
+            "title": ["Кількість блоків (екранів)", "Количество блоков(экранов)", "Number of blocks (screens)"],
+            "typ": "slider",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["1", "1", "1"],
+                "2": ["2", "2", "2"],
+                "3": ["3", "3", "3"],
+                "4": ["4", "4", "4"],
+                "5": ["5", "5", "5"],
+                "6": ["6", "6", "6"],
+                "7": ["7", "7", "7"],
+                "8": ["8", "8", "8"],
+                "9": ["9", "9", "9"],
+                "10":[ "10+", "10+", "10+"]
+            },
+            "name": "uniqpage",
+            "related_calculation": "design.result",
+            "result": 0
+        },
+        {
+            "step": 1,
+            "min": 0,
+            "max": 5,
+            "position": 1,
+            "days": 2,
+            "price": 1000,
+            "title": ["Кількість мовних версій сайту", "Number of language versions of the site"],
+            "marks": {
+                "1": ["1", "1", "1"],
+                "2": ["2", "2", "2"],
+                "3": ["3", "3", "3"],
+                "4": ["4", "4", "4"],
+                "5": ["5", "5", "5"],
+                "6": ["6  i бiльше", "6 и более", "6 and more"]
+            },
+            "typ": "slider",
+            "name": "languages",
+            "result": 0
+        },
+        {
+            "days": 10,
+            "price": 15000,
+            "position":0,
+            "title": ["Рукописна CMS", "Рукописная CMS", "Handwritten CMS"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        {
+            "days": 1,
+            "price": 500,
+            "position":0,
+            "title": ["Форма збору даних", "Форма сбора данных", "Callback form"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        {
+            "days": 1,
+            "price": 1000,
+            "position":0,
+            "title": ["Калькулятор цін","Калькулятор цен","Price calculator"],
+            "typ": "checkbox",
+            "name": "calсulator"
+        }
+    ],
+    "Store": [
+        {
+            "step": 1,
+            "min": 0,
+            "max": 4,
+            "position": 0,
+            "days": 2,
+            "price": 500,
+            "title":  ["Складність дизайну", "Сложность дизайна", "Design complexity"],
+            "typ": "slider",
+            "name": "design",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["Простий дизайн", "Простой дизайн", "Simple Design"],
+                "2": ["Середній", "Средний", "Medium"],
+                "3": ["Складний", "Сложный", "Complex"],
+                "4": ["Wow дизайн", "Wow дизайн", "Wow design"]
+            },
+            "related_calculation": "uniqpage.position",
+            "result": 0
+        },
+ {
+            "step": 1,
+            "min": 0,
+            "max": 5,
+            "position": 0,
+            "days": 1,
+            "price": 1,
+            "title": ["Кількість унікальних сторінок", "Количество уникальных страниц", "Number of unique pages"],
+            "typ": "slider",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["1-3", "1-3", "1-3"],
+                "2": ["3-7", "3-7", "3-7"],
+                "3": ["7-15", "7-15", "7-15"],
+                "4": ["15-50", "15-50", "15-50"],
+                "5": ["50 i бiльше", "50 и более", "50 and more"]
+            },
+            "name": "uniqpage",
+            "related_calculation": "design.result",
+            "result": 0
+        },
+        {
+            "step": 1,
+            "min": 0,
+            "max": 5,
+            "position": 1,
+            "days": 2,
+            "price": 1000,
+            "title": ["Кількість мовних версій сайту", "Number of language versions of the site"],
+            "marks": {
+                "1": ["1", "1", "1"],
+                "2": ["2", "2", "2"],
+                "3": ["3", "3", "3"],
+                "4": ["4", "4", "4"],
+                "5": ["5", "5", "5"],
+                "6": ["6  i бiльше", "6 и более", "6 and more"]
+            },
+            "typ": "slider",
+            "name": "languages",
+            "result": 0
+        },
+        {
+            "days": 1,
+            "price": 500,
+            "position":0,
+            "title": ["Форма збору даних", "Форма сбора данных", "Callback form"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+
+        {
+            "days": 10,
+            "price": 15000,
+            "position":1,
+            "title": ["Рукописна CMS", "Рукописная CMS", "Handwritten CMS"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        {
+            "days": 6,
+            "price": 1500,
+            "position":0,
+            "title": ["Особистий кабінет", "Личный кабинет", "Personal Area"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        {
+            "days": 4,
+            "price": 5000,
+            "position":0,
+            "title": ["Імпорт/експорт через Ексель", "Импорт/экспорт через Ексель", "Import / export via Excel"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        {
+            "days": 3,
+            "price": 3000,
+            "position":0,
+            "title": ["Онлайн оплата", "Онлайн оплата", "Online payment"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        {
+            "days": 3,
+            "price": 1500,
+            "position":0,
+            "title": ["Фільтр товарів", "Фильтр товаров", "Product filter"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        {
+            "days": 3,
+            "price": 3000,
+            "position":0,
+            "title": ["Ярлики товарів(Акції, новинки..)", "Ярлыки товаров(Акции, новинки..)", "Product labels (Promotions, novelties..)"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        {
+            "days": 3,
+            "price": 3000,
+            "position":0,
+            "title": ["Порівняння, рейтинг товарів", "Сравнение, рейтинг товаров", "Comparison, product rating"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        }
+    ],
+    "Portal": [
+        {
+            "step": 1,
+            "min": 0,
+            "max": 4,
+            "position": 0,
+            "days": 2,
+            "price": 500,
+            "title":  ["Складність дизайну", "Сложность дизайна", "Design complexity"],
+            "typ": "slider",
+            "name": "design",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["Простий дизайн", "Простой дизайн", "Simple Design"],
+                "2": ["Середній", "Средний", "Medium"],
+                "3": ["Складний", "Сложный", "Complex"],
+                "4": ["Wow дизайн", "Wow дизайн", "Wow design"]
+            },
+            "related_calculation": "uniqpage.position",
+            "result": 0
+        },
+  {
+            "step": 1,
+            "min": 0,
+            "max": 5,
+            "position": 0,
+            "days": 1,
+            "price": 1,
+            "title": ["Кількість унікальних сторінок", "Количество уникальных страниц", "Number of unique pages"],
+            "typ": "slider",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["1-3", "1-3", "1-3"],
+                "2": ["3-7", "3-7", "3-7"],
+                "3": ["7-15", "7-15", "7-15"],
+                "4": ["15-50", "15-50", "15-50"],
+                "5": ["50 i бiльше", "50 и более", "50 and more"]
+            },
+            "name": "uniqpage",
+            "related_calculation": "design.result",
+            "result": 0
+        },
+        {
+            "step": 1,
+            "min": 0,
+            "max": 5,
+            "position": 1,
+            "days": 2,
+            "price": 1000,
+            "title": ["Кількість мовних версій сайту", "Number of language versions of the site"],
+            "marks": {
+                "1": ["1", "1", "1"],
+                "2": ["2", "2", "2"],
+                "3": ["3", "3", "3"],
+                "4": ["4", "4", "4"],
+                "5": ["5", "5", "5"],
+                "6": ["6  i бiльше", "6 и более", "6 and more"]
+            },
+            "typ": "slider",
+            "name": "languages",
+            "result": 0
+        },
+        {
+            "days": 1,
+            "price": 500,
+            "position":0,
+            "title": ["Форма збору даних", "Форма сбора данных", "Callback form"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+
+        {
+            "days": 10,
+            "price": 15000,
+            "position":0,
+            "title": ["Рукописна CMS", "Рукописная CMS", "Handwritten CMS"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        {
+            "days": 6,
+            "price": 1500,
+            "position":0,
+            "title": ["Особистий кабінет", "Личный кабинет", "Personal Area"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        }
+    ],
+    "SEO": [
+        {
+            "min": 0,
+            "max": 3,
+            "step": 10,
+            "position": 0,
+            "days": 0,
+            "price": 350,
+            "title": ["Кількість напрямів діяльності (Ціна за 1 місяць роботи)", "Количество направлений деятельности (Цена за 1 месяц работы)", "Number of activities (Price for 1 month of work)" ],
+            "typ": "slider",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1":[ "1", "1", "1"],
+                "2":[ "2", "2", "2"],
+                "3":[ "3", "3", "3"]
+            },
+            "name": "SEO",
+            "result": 0
+        }
+    ],
+    "Logo": [
+        {
+            "step": 1,
+            "min": 0,
+            "max": 3,
+            "position": 0,
+            "days": 2,
+            "price": 250,
+            "title":  ["Складність дизайну", "Сложность дизайна", "Design complexity"],
+            "typ": "slider",
+            "name": "design",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["Простий дизайн", "Простой дизайн", "Simple Design"],
+                "2": ["Середній", "Средний", "Medium"],
+                "3": ["Складний", "Сложный", "Complex"]
+            },
+            "related_calculation": "uniqpage.position",
+            "result": 0
+        },
+ {
+            "step": 1,
+            "min": 0,
+            "max": 4,
+            "position": 0,
+            "days": 1,
+            "price": 1,
+            "title": ["Кількість варіантів дизайну", "Количество вариантов дизайна", "Number of design options"],
+            "typ": "slider",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["1", "2", "3"],
+                "2": ["2", "2", "2"],
+                "3": ["3", "3", "3"],
+                "4": ["4+", "4+", "4+"]
+            },
+            "name": "uniqpage",
+            "related_calculation": "design.result",
+            "result": 0
+        }
+    ],
+    "Reklama": [
+        {
+            "min": 0,
+            "max": 10,
+            "step": 10,
+            "position": 0,
+            "days": 0,
+            "price": 250,
+            "title": ["Кількість напрямів діяльності (Ціна за 1 місяць роботи)", "Количество направлений деятельности (Цена за 1 месяц работы)", "Number of activities (Price for 1 month of work)" ],
+            "typ": "slider",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "10":[ "1", "1", "1"],
+                "20":[ "2", "2", "2"],
+                "30":[ "3", "3", "3"],
+                "40":[ "4", "4", "4"],
+                "50":[ "5 i бiльше", "5 и более", "5 +"],
+                "60":[ "10 i бiльше", "6 и более", "6 +"],
+                "70":[ "20 i бiльше", "7 и более", "7 +"],
+                "80":[ "30 i бiльше", "8 и более", "8 +"],
+                "90":[ "40 i бiльше", "9 и более", "9 +"],
+                "100":[ "50 i бiльше", "10 и более", "10 +"]
+            },
+            "name": "Reklama",
+            "result": 0
+        }
+
+    ],
+    "FirmStyle": [
+        {
+            "step": 1,
+            "min": 0,
+            "max": 3,
+            "position": 0,
+            "days": 2,
+            "price": 250,
+            "title":  ["Складність дизайну", "Сложность дизайна", "Design complexity"],
+            "typ": "slider",
+            "name": "design",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["Простий дизайн", "Простой дизайн", "Simple Design"],
+                "2": ["Середній", "Средний", "Medium"],
+                "3": ["Складний", "Сложный", "Complex"]
+            },
+            "related_calculation": "uniqpage.position",
+            "result": 0
+        },
+ {
+            "step": 1,
+            "min": 0,
+            "max": 4,
+            "position": 0,
+            "days": 1,
+            "price": 1,
+            "title": ["Кількість варіантів дизайну", "Количество вариантов дизайна", "Number of design options"],
+            "typ": "slider",
+            "marks": {
+                "0": ["Виберіть", "Выберите", "Select"],
+                "1": ["1", "2", "3"],
+                "2": ["2", "2", "2"],
+                "3": ["3", "3", "3"],
+                "4": ["4+", "4+", "4+"]
+            },
+            "name": "uniqpage",
+            "related_calculation": "design.result",
+            "result": 0
+        },
+                {
+            "days": 2,
+            "price": 500,
+            "position":0,
+            "title": [ "Бренд на аксесуарах", "Бренд на аксессуарах", "Brand on accessories"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        
+                {
+            "days": 2,
+            "price": 500,
+            "position":0,
+            "title": [ "Бренд на бланках", "Бренд на бланках", "Brand on letterhead"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        },
+        
+                {
+            "days": 1,
+            "price": 500,
+            "position":0,
+            "title": [ "Бренд на одягу", "Бренд на одежде", "Brand on clothes"],
+            "typ": "checkbox",
+            "name": "formdata",
+            "result": 0
+        }
+    ]
+}
