@@ -41,11 +41,11 @@ function handleEmail(e) {
     console.log(e.target.value);
 }
 function forma_send(e) {
-    console.log(form);
+    if (e.preventDefault) {
+        e.preventDefault(); // отменить стандартное действие
+    }
 
     const formData = new FormData();
-
-    //formData.append('method', 'POST');
     formData.append('icon', form.icon);
     formData.append('name', form.name);
     formData.append('phone', form.phone);
@@ -54,34 +54,18 @@ function forma_send(e) {
     formData.append('termin', form.termin);
     formData.append('message', form.message);
 
-
-    // Display the key/value pairs
-    for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-    }
-
-
-    
-    fetch('https://new.joie.com.ua/api/get-form', {
+    fetch('https://joie.com.ua/joie-callback.php', {
         method: 'POST',
-        body: formData,
-        headers: {
-            //'Authorization': 'Bearer ' + this.token,
-            //'Accept': 'application/json',
-            "Access-Control-Allow-Origin": "*",
-            'Content-Type': 'multipart/form-data'
-        },
-        
+        body: formData
     })
-        .then(function (response) {
-
-            //if (response.status != 201) {
-            //    this.fetchError = response.status;
-            //} else {
-            //    response.json().then(function (data) {
-            //        this.fetchResponse = data;
-            //    }.bind(this));
-            console.log(response);
+        .then(response => response.json())
+        .then(data => {
+            console.log('Успешно отправлено:', data);
+            alert("✅ Заявка отправлена!");
+        })
+        .catch(error => {
+            console.error('Ошибка при отправке:', error);
+            alert("❌ Ошибка при отправке.");
         });
 }
 
@@ -168,8 +152,9 @@ onMounted(() => {
 
                 <template v-if="lang === 'ua'">
 
-                    <Form method="post" action="https:/new.joie.com.ua/joie-callback.php" :validation-schema="schema"
-                        enctype="multipart/form-data">
+                    <Form :validation-schema="schema"
+                          enctype="multipart/form-data"
+                          @submit="forma_send">
 
                         <p>ФІО
                             <Field name="name" type="name" @change="handleName( $event )" />
@@ -211,16 +196,16 @@ onMounted(() => {
                         <p>Повідомлення
                             <textarea name="message" type="text" @change="handleTextarea( $event )"></textarea>
                         </p>
-                        <p>
+                        <p><button type="submit">
                             <a class="a23 magic-hover magic-hover__square">
-                                <button type="button" @click="forma_send(e)">
+                                
                                     <span>
                                         <template v-if="lang === 'ua'"><span>Надіслати</span></template>
                                         <template v-if="lang === 'ru'"><span>Отправить</span></template>
                                         <template v-if="lang === 'en'"><span>Send</span></template>
                                     </span>
-                                </button>
-                            </a>
+                                
+                            </a></button>
                         </p>
                     </Form>
                 </template>

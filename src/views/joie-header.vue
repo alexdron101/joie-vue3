@@ -1,19 +1,106 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { watch } from 'vue'
-
+import { Form, Field, ErrorMessage } from 'vee-validate'
+import * as yup from 'yup'
 
 const route = useRoute()
 const lang = ref(route.params.lang ? route.params.lang : 'ua')
-
-
 
 watch(() => route.params, async (toParams, previousParams) => {
     lang.value = toParams.lang ? toParams.lang : 'ua';
 })
 
+const form = {
+    name: '',
+    phone: '',
+    email: '',
+    yslyga: '',
+    termin: '',
+    message: '',
+    method: '',
+    icon: ''
+};
 
+const schema = yup.object({
+    name: yup.string().required(),
+    phone: yup.string().min(10),
+    email: yup.string().required().email(),
+});
+
+function handleFileUpload(e) {
+    form.icon = e.target.files[0];
+    console.log(e.target.value);
+}
+function handleName(e) {
+    form.name = e.target.value;
+    console.log(e.target.value);
+    console.log(this.form.name);
+}
+function handlePhone(e) {
+    form.phone = e.target.value;
+    console.log(e.target.value);
+}
+function handleEmail(e) {
+    form.email = e.target.value;
+    console.log(e.target.value);
+}
+function forma_send(e) {
+    if (e.preventDefault) {
+        e.preventDefault(); // отменить стандартное действие
+    }
+
+    const formData = new FormData();
+    formData.append('icon', form.icon);
+    formData.append('name', form.name);
+    formData.append('phone', form.phone);
+    formData.append('email', form.email);
+    formData.append('yslyga', form.yslyga);
+    formData.append('termin', form.termin);
+    formData.append('message', form.message);
+
+    fetch('https://joie.com.ua/joie-callback.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Успешно отправлено:', data);
+            alert("✅ Заявка отправлена!");
+        })
+        .catch(error => {
+            console.error('Ошибка при отправке:', error);
+            alert("❌ Ошибка при отправке.");
+        });
+}
+
+
+
+onMounted(() => {
+
+    window.scrollTo(0, 0)
+
+
+
+    const anchors = document.querySelectorAll('a[href*="#"]')
+
+    for (let anchor of anchors) {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault()
+
+            const blockID = anchor.getAttribute('href').substr(1)
+
+            document.getElementById(blockID).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            })
+        })
+    }
+
+    document.body.classList.add('page-small')
+
+})
 
 </script>
     
@@ -230,6 +317,69 @@ watch(() => route.params, async (toParams, previousParams) => {
     </b>
 
 
+    <div class="forma-main"><div class="bod"><b class="forma-main-x"></b>
+                 <h3>
+                    <template v-if="lang === 'ua'"><span>Зворотній зв’язок</span></template>
+                    <template v-if="lang === 'ru'"><span>Обратная связь</span></template>
+                    <template v-if="lang === 'en'"><span>Callback</span></template>
+                </h3>
+    <Form :validation-schema="schema"
+                          enctype="multipart/form-data"
+                          @submit="forma_send">
+
+                        <p>ФІО
+                            <Field name="name" type="name" @change="handleName( $event )" />
+                            <ErrorMessage name="name" />
+                        </p>
+                        <p>Телефон
+                            <Field name="phone" type="phone" @change="handlePhone( $event )" />
+                            <ErrorMessage name="phone" />
+                        </p>
+                        <p>E-mail
+                            <Field name="email" type="email" @change="handleEmail( $event )" />
+                            <ErrorMessage name="email" />
+                        </p>
+                        <p>Послуга
+                            <Field name="yslyga" as="select" @change="handleYslyga( $event )">
+                                <option disabled value="">Оберіть послугу</option>
+                                <option value="Сайт візитка">Сайт візитка</option>
+                                <option value="Сайт корпоративний">Сайт корпоративний</option>
+                                <option value="Landing page">Landing page</option>
+                                <option value="Інтернет магазин">Інтернет магазин</option>
+                                <option value="SEO просування">SEO просування</option>
+                                <option value="Контекстна реклама">Контекстна реклама</option>
+                                <option value="Інше">Інше</option>
+                            </Field>
+                        </p>
+                        <p>Бажані термiни
+                            <Field name="termin" as="select" @change="handleTermin( $event )">
+                                <option disabled value="">Оберіть термiн</option>
+                                <option value="На вчора">На вчора</option>
+                                <option value="До 1 тижня">До 1 тижня</option>
+                                <option value="1-2 тижні">1-2 тижні</option>
+                                <option value="До 4-8 тижнів">До 4-8 тижнів</option>
+                                <option value="Терміни не важливі">Терміни не важливі</option>
+                            </Field>
+                        </p>
+                        <p>Додати файл
+                            <input type="file" @change="handleFileUpload( $event )" />
+                        </p>
+                        <p>Повідомлення
+                            <textarea name="message" type="text" @change="handleTextarea( $event )"></textarea>
+                        </p>
+                        <p><button type="submit">
+                            <a class="a23 magic-hover magic-hover__square">
+                                
+                                    <span>
+                                        <template v-if="lang === 'ua'"><span>Надіслати</span></template>
+                                        <template v-if="lang === 'ru'"><span>Отправить</span></template>
+                                        <template v-if="lang === 'en'"><span>Send</span></template>
+                                    </span>
+                                
+                            </a></button>
+                        </p>
+                    </Form>
+</div></div>
 
 </template>
     

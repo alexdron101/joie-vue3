@@ -3,16 +3,23 @@ export const startCursor = () => {
 
 
 
-  var clickform = document.querySelectorAll('.forma-up');
-  for (var i = clickform.length - 1; i >= 0; i--) {
-    var toggle = clickform[i];
-    toggleHandler251(toggle);
-  };
-  function toggleHandler251(toggle) {
-    toggle.addEventListener("click", function (e) {
-      alert('forma-up');
+  document.querySelectorAll('.forma-up').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelector('div#body-back-fon').classList.add('act');
+        document.querySelector('body').classList.add('no-scroll');
+        document.querySelector('.forma-main').classList.add('act');
     });
-  }
+});
+
+function closeForm() {
+    document.querySelector('div#body-back-fon').classList.remove('act');
+    document.querySelector('body').classList.remove('no-scroll');
+    document.querySelector('.forma-main').classList.remove('act');
+}
+
+document.querySelector('div#body-back-fon').addEventListener('click', closeForm);
+document.querySelector('.forma-main-x').addEventListener('click', closeForm);
+
 
 
 
